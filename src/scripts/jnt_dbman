@@ -1,0 +1,108 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+"""DBManager for Janitoo
+"""
+__license__ = """
+    This file is part of Janitoo.
+
+    Janitoo is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Janitoo is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Janitoo. If not, see <http://www.gnu.org/licenses/>.
+
+"""
+__author__ = 'Sébastien GALLET aka bibi21000'
+__email__ = 'bibi21000@gmail.com'
+__copyright__ = "Copyright © 2013-2014-2015 Sébastien GALLET aka bibi21000"
+import warnings
+warnings.filterwarnings("ignore")
+import sys, os
+import time, datetime
+import socket
+import logging
+import shutil
+
+import pkg_resources
+#We must NOT subsitute % in value for alembic (database section)
+from ConfigParser import RawConfigParser as ConfigParser
+import argparse
+
+from sqlalchemy.orm import sessionmaker, scoped_session
+from alembic.script import ScriptDirectory as alScriptDirectory
+from alembic import command as alcommand
+
+from janitoo.options import JNTOptions
+from janitoo_db.base import Base, create_db_engine
+from janitoo_db.migrate import Config as alConfig, collect_configs, janitoo_config
+
+
+def jnt_parser():
+    parser = argparse.ArgumentParser()
+
+    subparsers = parser.add_subparsers(dest='command', help='commands')
+
+    collect_parser = subparsers.add_parser('collect', help='Collect and show entry_points for models')
+
+    initdb_parser = subparsers.add_parser('initdb', help='Initialise database using alembic migration scripts')
+    initdb_parser.add_argument('--url', action='store', help='The db url to connect to', default="sqlite:////tmp/janitoo_dbman.sqlite")
+
+    heads_parser = subparsers.add_parser('heads', help='Show heads')
+    heads_parser.add_argument('--url', action='store', help='The db url to connect to', default="sqlite:////tmp/janitoo_dbman.sqlite")
+
+    branches_parser = subparsers.add_parser('branches', help='Show branches')
+    branches_parser.add_argument('--url', action='store', help='The db url to connect to', default="sqlite:////tmp/janitoo_dbman.sqlite")
+
+    history_parser = subparsers.add_parser('history', help='Show history')
+    history_parser.add_argument('--url', action='store', help='The db url to connect to', default="sqlite:////tmp/janitoo_dbman.sqlite")
+
+    upgrade_parser = subparsers.add_parser('upgrade', help='Upgrade the database')
+    upgrade_parser.add_argument('--url', action='store', help='The db url to connect to', default="sqlite:////tmp/janitoo_dbman.sqlite")
+
+    downgrade_parser = subparsers.add_parser('downgrade', help='Downgrade the database')
+    downgrade_parser.add_argument('-url', action='store', help='The db url to connect to', default="sqlite:////tmp/janitoo_dbman.sqlite")
+
+    return parser
+
+def main():
+    #~ options = JNTOptions(options)
+    #~ engine = create_db_engine(options)
+    #~ dbmaker = sessionmaker()
+    #~ # Bind the sessionmaker to engine
+    #~ dbmaker.configure(bind=engine)
+    #~ dbsession = scoped_session(dbmaker)
+    #~ print options.data['command']
+    #~ commands = {
+        #~ 'upgrade':upgrade,
+        #~ 'downgrade':downgrade,
+        #~ 'branches':branches,
+        #~ 'heads':heads,
+        #~ 'collect':collect,
+        #~ 'initdb':initdb,
+    #~ }
+    parser = jnt_parser()
+    args = parser.parse_args()
+    if args.command == "initdb":
+        alcommand.upgrade(janitoo_config(args.url), 'heads')
+    elif args.command == "collect":
+        for entrypoint in pkg_resources.iter_entry_points(group='janitoo.models'):
+            print("Found extension %s provided by module %s"%(entrypoint.name, entrypoint.module_name))
+    elif args.command == "heads":
+        alcommand.heads(janitoo_config(args.url), verbose=True)
+    elif args.command == "branches":
+        alcommand.branches(janitoo_config(args.url), verbose=True)
+    elif args.command == "upgrade":
+        alcommand.upgrade(janitoo_config(args.url), 'heads')
+    elif args.command == "downgrade":
+        alcommand.downgrade(janitoo_config(args.url), 'base')
+
+if __name__ == '__main__':
+    main()
