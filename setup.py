@@ -103,6 +103,6 @@ setup(
                      'itsdangerous',
                     ],
     dependency_links = [
-      'https://github.com/bibi21000/janitoo/archive/master.zip#egg=janitoo-%s'%janitoo_version',
+      'https://github.com/bibi21000/janitoo/archive/master.zip#egg=janitoo-%s'%janitoo_version,
     ],
 )
