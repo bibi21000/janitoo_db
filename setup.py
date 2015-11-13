@@ -102,4 +102,7 @@ setup(
                      'alembic >= 0.7.6',
                      'itsdangerous',
                     ],
+    dependency_links = [
+      'https://github.com/bibi21000/janitoo/archive/master.zip#egg=janitoo',
+    ],
 )
