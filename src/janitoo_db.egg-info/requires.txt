@@ -1,5 +1,0 @@
-janitoo == 0.0.6
-pysqlite >= 2.6.3
-SQLAlchemy >= 1.0.4
-alembic >= 0.7.6
-itsdangerous
