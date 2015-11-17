@@ -40,9 +40,9 @@ del module
 import pkg_resources
 import sys
 
-logger.info("Load core modules %s", __all__)
+logger.info("Load core models %s", __all__)
 
 for entrypoint in pkg_resources.iter_entry_points(group='janitoo.models'):
-    logger.info("Extend code with %s", entrypoint)
+    logger.info("Extend models with %s", entrypoint)
     plugin = entrypoint.load()
     plugin( sys.modules[__name__] )

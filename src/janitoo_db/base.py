@@ -26,8 +26,8 @@ __email__ = 'bibi21000@gmail.com'
 __copyright__ = "Copyright © 2013-2014 Sébastien GALLET aka bibi21000"
 
 import logging
-import sqlalchemy
 logger = logging.getLogger( "janitoo.db" )
+import sqlalchemy
 from sqlalchemy.ext.declarative import declarative_base
 
 Base = declarative_base()
@@ -38,6 +38,7 @@ def create_db_engine(options):
     alembic = options.get_options('database')
     return sqlalchemy.engine_from_config(alembic, prefix='sqlalchemy.')
 
+#DEprecated
 def check_version_db(options, extension="janitoo"):
     """
     """
@@ -55,6 +56,7 @@ def check_version_db(options, extension="janitoo"):
     alcommand.upgrade(config, "head")
     logger.debug('[%s] - Finishing full check of database', self.__class__.__name__)
 
+#DEprecated
 def check_db(options, migrate=None):
     """Check the db version and update if needed and allowed
     migrate == None : use auto_migrate from conf_file
