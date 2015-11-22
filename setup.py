@@ -98,7 +98,7 @@ setup(
     install_requires=[
                      'janitoo == %s'%janitoo_version,
                      'pysqlite >= 2.6.3',
-                     'SQLAlchemy == 1.0.6',
+                     'SQLAlchemy >= 1.0.6',
                      'SQLAlchemy-Utils',
                      'alembic >= 0.7.7',
                      'itsdangerous',
