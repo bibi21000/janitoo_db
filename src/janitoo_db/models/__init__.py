@@ -35,9 +35,9 @@ modules = [ basename(f)[:-3] for f in glob.glob(dirname(__file__)+"/*.py") if is
 logger.info("Load core models %s", modules)
 for module in modules:
     #~ __import__(module, locals(), globals())
-    mod = __import__(module, locals(), globals())
-    mod.extend(sys.modules[__name__])
-    del mod
+    #~ from __import__(module, locals(), globals()) import extend
+    __import__(module, locals(), globals()).extend(sys.modules[__name__])
+    #~ del mod
 
 import pkg_resources
 
