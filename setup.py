@@ -100,7 +100,7 @@ setup(
                      'pysqlite >= 2.6.3',
                      'SQLAlchemy >= 1.0.4',
                      'SQLAlchemy-Utils',
-                     'alembic >= 0.7.6',
+                     'alembic == 0.7.7',
                      'itsdangerous',
                     ],
     dependency_links = [
