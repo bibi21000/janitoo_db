@@ -28,7 +28,7 @@ __copyright__ = "Copyright © 2013-2014-2015 Sébastien GALLET aka bibi21000"
 
 import logging
 logger = logging.getLogger( "janitoo.db" )
-from sqlalchemy.orm import class_mapper
+from sqlalchemy.orm import class_mapper, Query
 from datetime import datetime
 
 class CRUDMixin(object):

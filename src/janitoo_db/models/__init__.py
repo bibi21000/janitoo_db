@@ -28,19 +28,17 @@ except:  # pragma: no cover
     # bootstrapping
     pass # pragma: no cover
 
+import sys
 from os.path import dirname, basename, isfile
 import glob
-modules = glob.glob(dirname(__file__)+"/*.py")
-__all__ = [ basename(f)[:-3] for f in modules if isfile(f) and not basename(f).startswith('_')]
-
-for module in __all__:
-    __import__(module, locals(), globals())
-del module
+modules = [ basename(f)[:-3] for f in glob.glob(dirname(__file__)+"/*.py") if isfile(f) and not basename(f).startswith('_')]
+logger.info("Load core models %s", modules)
+for module in modules:
+    mod = __import__(module, locals(), globals())
+    mod.extend(sys.modules[__name__])
+    del mod
 
 import pkg_resources
-import sys
-
-logger.info("Load core models %s", __all__)
 
 for entrypoint in pkg_resources.iter_entry_points(group='janitoo.models'):
     logger.info("Extend models with %s", entrypoint)
