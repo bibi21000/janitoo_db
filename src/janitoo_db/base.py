@@ -75,6 +75,7 @@ def check_db(options, migrate=None):
     alcommand.upgrade(config, "head")
     logger.debug('[%s] - Finishing full check of database', self.__class__.__name__)
 
+#DEprecated
 def create_session():
     """Create a scoped session
     """
@@ -83,6 +84,7 @@ def create_session():
         sess = scoped_session(self.dbmaker)
     return sess
 
+#DEprecated
 def start_db():
     """Open the db connection
     """

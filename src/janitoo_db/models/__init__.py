@@ -22,17 +22,17 @@ __author__ = 'Sébastien GALLET aka bibi21000'
 __email__ = 'bibi21000@gmail.com'
 import logging
 logger = logging.getLogger( "janitoo.db" )
-try:
-    __import__('pkg_resources').declare_namespace(__name__)
-except:  # pragma: no cover
-    # bootstrapping
-    pass # pragma: no cover
+#~ try:
+    #~ __import__('pkg_resources').declare_namespace(__name__)
+#~ except:  # pragma: no cover
+    #~ # bootstrapping
+    #~ pass # pragma: no cover
 
 import sys
 from os.path import dirname, basename, isfile
 import glob
 modules = [ basename(f)[:-3] for f in glob.glob(dirname(__file__)+"/*.py") if isfile(f) and not basename(f).startswith('_')]
-logger.info("Load core models %s", modules)
+logger.info("Load core models from %s", modules)
 for module in modules:
     #~ __import__(module, locals(), globals())
 

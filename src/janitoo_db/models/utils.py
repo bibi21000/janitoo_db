@@ -27,8 +27,7 @@ __author__ = 'Sébastien GALLET aka bibi21000'
 __email__ = 'bibi21000@gmail.com'
 __copyright__ = "Copyright © 2014-2015 Sébastien GALLET aka bibi21000"
 import logging
-logger = logging.getLogger( "janitoo_db" )
-from six import text_type, iteritems
+logger = logging.getLogger( "janitoo.db" )
 import sqlalchemy as sa
 from sqlalchemy.orm import relationship, backref
 from janitoo_db.helpers import CRUDMixin

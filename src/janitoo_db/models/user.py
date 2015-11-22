@@ -26,7 +26,7 @@ __email__ = 'bibi21000@gmail.com'
 __copyright__ = "Copyright © 2013-2014 Sébastien GALLET aka bibi21000"
 
 import logging
-logger = logging.getLogger( "janitoo_db" )
+logger = logging.getLogger( "janitoo.db" )
 from datetime import datetime
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 from itsdangerous import SignatureExpired
