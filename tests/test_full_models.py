@@ -37,6 +37,7 @@ from janitoo_nosetests import JNTTBase
 from janitoo.options import JNTOptions
 from janitoo_db.base import Base, create_db_engine
 
+import janitoo_db.models as jnt_models
 
 ##############################################################
 #Check that we are in sync with the official command classes
@@ -53,7 +54,6 @@ class TestFullModels(JNTTBase):
     """
     def setUp(self):
         JNTTBase.setUp(self)
-        import janitoo_db.models
 
     def test_001_engine(self):
         options = JNTOptions({'conf_file':'tests/data/janitoo_db.conf'})
