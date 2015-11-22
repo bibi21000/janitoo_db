@@ -34,9 +34,9 @@ import glob
 modules = [ basename(f)[:-3] for f in glob.glob(dirname(__file__)+"/*.py") if isfile(f) and not basename(f).startswith('_')]
 logger.info("Load core models %s", modules)
 for module in modules:
-    __import__(module, locals(), globals())
+    #~ __import__(module, locals(), globals())
 
-    #~ __import__(module, locals(), globals()).extend(sys.modules[__name__])
+    __import__(module, locals(), globals()).extend(sys.modules[__name__])
 
     #~ mod = __import__(module, locals(), globals())
     #~ mod.extend(sys.modules[__name__])
