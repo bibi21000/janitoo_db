@@ -1,4 +1,5 @@
-Create an extension which need a db acces
+Create an extension which need a db access
+==========================================
 
 Extends the models
 ------------------
@@ -91,6 +92,7 @@ Drop the database :
 
 Working with branches
 ---------------------
+
 Each extension (janitoo included) has its branch :
 
 Show all extension heads :
@@ -99,17 +101,20 @@ Show all extension heads :
 
     jnt_dbman heads
 
+
 Check full history of your extension :
 
 ..code: bash
 
     jnt_dbman history --revrange=janitoo_template:
 
+
 Generate the migration script for your extension :
 
 ..code: bash
 
     jnt_dbman generate -m "Initial import" --head=janitoo_template
+
 
 Clean the script as it can contains updates for others extension.
 
@@ -121,3 +126,4 @@ You can also use alembic to manage the models. You need to generate a copy of th
 ..code: bash
 
     jnt_dbman version_locations
+
