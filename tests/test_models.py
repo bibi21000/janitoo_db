@@ -33,25 +33,17 @@ from pkg_resources import iter_entry_points
 from sqlalchemy.orm import sessionmaker, scoped_session
 
 from janitoo_nosetests import JNTTBase
+from janitoo_nosetests.models import JNTTModels
 
 from janitoo.options import JNTOptions
 from janitoo_db.base import Base, create_db_engine
 
 import janitoo_db.models as jntmodels
 
-class TestFullModels(JNTTBase):
-    """Test the DatalogServer server
+class TestModels(JNTTModels):
+    """Test the models
     """
-    def setUp(self):
-        JNTTBase.setUp(self)
-        options = JNTOptions({'conf_file':'tests/data/janitoo_db.conf'})
-        options.load()
-        engine = create_db_engine(options)
-        self.dbmaker = sessionmaker()
-        # Bind the sessionmaker to engine
-        self.dbmaker.configure(bind=engine)
-        self.dbsession = scoped_session(self.dbmaker)
-        Base.metadata.create_all(bind=engine)
+    models_conf = "tests/data/janitoo_db.conf"
 
     def test_001_user(self):
         group = jntmodels.Group(name="test_group")
