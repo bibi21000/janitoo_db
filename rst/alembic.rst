@@ -30,7 +30,8 @@ Update the database section in the config file:
 
 ..code: bash
 
-version_locations = %(here)s/models/janitoo_template
+    version_locations = %(here)s/models/janitoo_template
+
 
 And the bash helper script:
 
@@ -38,10 +39,12 @@ And the bash helper script:
 
     vi alembic.sh
 
+
 ..code: bash
 
     #!/bin/bash
     alembic -c janitoo_template.conf -n database $* --version-path=models/janitoo_template
+
 
 Create a new SQL version management for your project :
 
