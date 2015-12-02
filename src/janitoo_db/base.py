@@ -42,38 +42,38 @@ def create_db_engine(options):
 def check_version_db(options, extension="janitoo"):
     """
     """
-    logger.debug('[%s] - Start checking db version for extension %s', self.__class__.__name__, extension)
+    logger.debug(u'[%s] - Start checking db version for extension %s', self.__class__.__name__, extension)
     self._create_db_engine()
     #We must retrieve tables from database to ensure it exist
     if migrate == False or (migrate is None and self.dbauto_migrate == False):
         #We should improve this by checking version in db and and alembic.
         if self.dbengine.dialect.has_table(self.dbengine.connect(), "dhcpd_lease") == False or self.dbengine.dialect.has_table(self.dbengine.connect(), "dhcpd_lease_param") == False:
-            raise JanitooException("Cant't find tables in database and auto_update is not enable. Please create database and tables by hand.")
-        logger.debug('[%s] - Finishing quick check of database', self.__class__.__name__)
+            raise JanitooException(u"Cant't find tables in database and auto_update is not enable. Please create database and tables by hand.")
+        logger.debug(u'[%s] - Finishing quick check of database', self.__class__.__name__)
         return
     config = alConfig(file_=self.options.data['conf_file'], ini_section='database')
     config.set_main_option("script_location", os.path.join(self._get_egg_path(), "alembic"))
     alcommand.upgrade(config, "head")
-    logger.debug('[%s] - Finishing full check of database', self.__class__.__name__)
+    logger.debug(u'[%s] - Finishing full check of database', self.__class__.__name__)
 
 #DEprecated
 def check_db(options, migrate=None):
     """Check the db version and update if needed and allowed
     migrate == None : use auto_migrate from conf_file
     """
-    logger.debug('[%s] - Start checking database', self.__class__.__name__)
+    logger.debug(u'[%s] - Start checking database', self.__class__.__name__)
     self._create_db_engine()
     #We must retrieve tables from database to ensure it exist
     if migrate == False or (migrate is None and self.dbauto_migrate == False):
         #We should improve this by checking version in db and and alembic.
         if self.dbengine.dialect.has_table(self.dbengine.connect(), "dhcpd_lease") == False or self.dbengine.dialect.has_table(self.dbengine.connect(), "dhcpd_lease_param") == False:
-            raise JanitooException("Cant't find tables in database and auto_update is not enable. Please create database and tables by hand.")
-        logger.debug('[%s] - Finishing quick check of database', self.__class__.__name__)
+            raise JanitooException(u"Cant't find tables in database and auto_update is not enable. Please create database and tables by hand.")
+        logger.debugu('[%s] - Finishing quick check of database', self.__class__.__name__)
         return
     config = alConfig(file_=self.options.data['conf_file'], ini_section='database')
     config.set_main_option("script_location", os.path.join(self._get_egg_path(), "alembic"))
     alcommand.upgrade(config, "head")
-    logger.debug('[%s] - Finishing full check of database', self.__class__.__name__)
+    logger.debug(u'[%s] - Finishing full check of database', self.__class__.__name__)
 
 #DEprecated
 def create_session():

@@ -191,7 +191,7 @@ def _hash_internal(method, salt, password):
     if method.startswith('pbkdf2:'):
         args = method[7:].split(':')
         if len(args) not in (1, 2):
-            raise ValueError('Invalid number of arguments for PBKDF2')
+            raise ValueError(u'Invalid number of arguments for PBKDF2')
         method = args.pop(0)
         iterations = args and int(args[0] or 0) or DEFAULT_PBKDF2_ITERATIONS
         is_pbkdf2 = True
@@ -202,11 +202,11 @@ def _hash_internal(method, salt, password):
 
     hash_func = _hash_funcs.get(method)
     if hash_func is None:
-        raise TypeError('invalid method %r' % method)
+        raise TypeError(u'invalid method %r' % method)
 
     if is_pbkdf2:
         if not salt:
-            raise ValueError('Salt is required for PBKDF2')
+            raise ValueError(u'Salt is required for PBKDF2')
         rv = pbkdf2_hex(password, salt, iterations,
                         hashfunc=hash_func)
     elif salt:

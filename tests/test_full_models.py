@@ -39,16 +39,6 @@ from janitoo_db.base import Base, create_db_engine
 
 import janitoo_db.models as jnt_models
 
-##############################################################
-#Check that we are in sync with the official command classes
-#Must be implemented for non-regression
-from janitoo.classes import COMMAND_DESC
-
-COMMAND_DISCOVERY = 0x5000
-
-assert(COMMAND_DESC[COMMAND_DISCOVERY] == 'COMMAND_DISCOVERY')
-##############################################################
-
 class TestFullModels(JNTTBase):
     """Test the DatalogServer server
     """

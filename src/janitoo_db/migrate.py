@@ -34,7 +34,7 @@ __email__ = 'bibi21000@gmail.com'
 __copyright__ = "Copyright © 2013-2014 Sébastien GALLET aka bibi21000"
 
 import logging
-logger = logging.getLogger( "janitoo.db" )
+logger = logging.getLogger( u"janitoo.db" )
 import os
 import pkg_resources
 import tempfile
@@ -48,16 +48,16 @@ from alembic.config import Config as alConfig
 from alembic.script import ScriptDirectory as alScriptDirectory
 from alembic import command as alcommand
 
-def janitoo_config(url='sqlite:////tmp/janitoo_db.sqlite'):
+def janitoo_config(url=u'sqlite:////tmp/janitoo_db.sqlite',pkg_name='janitoo_db',  conf_file=u'alembic_template.conf'):
     """Retrive a global config by collecting entry_points
     todo : take care of dependencies to order config by dependances
     """
-    config = Config(url=url, pkg_name='janitoo_db', ep_name='janitoo')
+    config = Config(url=url, conf_file=conf_file)
     version_locations = config.get_main_option("version_locations")
     for entrypoint in pkg_resources.iter_entry_points(group='janitoo.models'):
         pkg_name = entrypoint.module_name.split('.')[0]
         config_path = pkg_resources.resource_filename(pkg_resources.Requirement.parse(pkg_name), 'config')
-        version_locations +=  " %s/models/%s"%(config_path, entrypoint.name)
+        version_locations +=  u" %s/models/%s"%(config_path, entrypoint.name)
     config.set_main_option("version_locations", version_locations)
     return config
 
@@ -66,7 +66,7 @@ def collect_configs(url='sqlite:////tmp/janitoo_db.sqlite'):
     todo : take care of dependencies to order config by dependances
     """
     ret = []
-    config = Config(url=url, pkg_name='janitoo_db', ep_name='janitoo')
+    config = Config(url=url)
     ret.append(config)
     for entrypoint in pkg_resources.iter_entry_points(group='janitoo.models'):
         pkg_name = entrypoint.module_name.split('.')[0]
@@ -77,11 +77,11 @@ def collect_configs(url='sqlite:////tmp/janitoo_db.sqlite'):
 class Config(alConfig):
     """Generate an alembic config for janitoo extension
     """
-    def __init__(self, url='sqlite:////tmp/janitoo_db.sqlite', pkg_name='janitoo_db', ep_name='janitoo', **kwargs):
+    def __init__(self, url=u'sqlite:////tmp/janitoo_db.sqlite', pkg_name='janitoo_db', ep_name='janitoo', conf_file=u'alembic_template.conf', **kwargs):
         """
         """
-        file_ = os.path.join(tempfile.gettempdir(), 'jntal_%s.conf')%(''.join(random.SystemRandom().choice(string.ascii_uppercase + string.digits) for _ in range(12)))
-        src = os.path.join(pkg_resources.resource_filename(pkg_resources.Requirement.parse("janitoo_db"), 'config'), 'alembic_template.conf')
+        file_ = os.path.join(tempfile.gettempdir(), u'jntal_%s.conf')%(''.join(random.SystemRandom().choice(string.ascii_uppercase + string.digits) for _ in range(26)))
+        src = os.path.join(pkg_resources.resource_filename(pkg_resources.Requirement.parse(pkg_name), 'config'), conf_file)
         shutil.copyfile(src, file_)
         alConfig.__init__(self, file_=file_, ini_section='database', **kwargs)
         self.pkg_name = pkg_name
@@ -89,7 +89,7 @@ class Config(alConfig):
         config_path = pkg_resources.resource_filename(pkg_resources.Requirement.parse(pkg_name), 'config')
         self.set_main_option("script_location", os.path.join(config_path, 'alembic'))
         self.set_main_option("sqlalchemy.url", url)
-        self.set_main_option("version_locations", "%s/alembic/versions %s/models/%s"%(config_path, config_path, ep_name))
+        self.set_main_option("version_locations", "u%s/alembic/versions %s/models/%s"%(config_path, config_path, ep_name))
 
     def __del__(self):
         """
