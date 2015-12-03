@@ -47,7 +47,7 @@ TAGGED := $(shell git tag | grep -c v${janitoo_version} )
 -include CONFIG.make
 -include ../CONFIG.make
 
-.PHONY: help check-tag clean all build develop install uninstall clean-doc doc tests pylint deps
+.PHONY: help check-tag clean all build develop install uninstall clean-doc doc certification tests pylint deps
 
 help:
 	@echo "Please use \`make <target>' where <target> is one of"
@@ -155,6 +155,11 @@ tests:
 	$(NOSE) $(NOSEOPTS) $(NOSECOVER) tests
 	@echo
 	@echo "Tests for ${MODULENAME} finished."
+
+certification:
+	$(NOSE) --verbosity=2 --with-xunit --xunit-file=certification/result.xml certification
+	@echo
+	@echo "Certification for ${MODULENAME} finished."
 
 build:
 	${PYTHON_EXEC} setup.py build --build-base $(BUILDDIR)
