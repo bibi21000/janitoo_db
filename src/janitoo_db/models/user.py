@@ -27,11 +27,14 @@ __copyright__ = "Copyright © 2013-2014 Sébastien GALLET aka bibi21000"
 
 import logging
 logger = logging.getLogger( "janitoo.db" )
+
+import sys
 from datetime import datetime
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 from itsdangerous import SignatureExpired
 import sqlalchemy as sa
 from sqlalchemy.orm import relationship, backref, synonym
+
 from janitoo_db.helpers import CRUDMixin
 from janitoo_db.base import Base
 from janitoo_db.security import generate_password_hash, check_password_hash
