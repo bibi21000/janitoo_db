@@ -40,6 +40,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, scoped_session
 from alembic.script import ScriptDirectory as alScriptDirectory
 from alembic import command as alcommand
+from alembic.migration import MigrationContext
 
 from janitoo.options import JNTOptions
 from janitoo_db.base import Base, create_db_engine
@@ -58,6 +59,9 @@ def jnt_parser():
     version_locations_parser.add_argument('-u', '--url', action='store', help='The db url to connect to', default="sqlite:////tmp/janitoo_dbman.sqlite")
 
     initdb_parser = subparsers.add_parser('initdb', help='Initialise database using alembic migration scripts')
+    initdb_parser.add_argument('-u', '--url', action='store', help='The db url to connect to', default="sqlite:////tmp/janitoo_dbman.sqlite")
+
+    initdb_parser = subparsers.add_parser('versiondb', help='Return the database version using alembic migration context')
     initdb_parser.add_argument('-u', '--url', action='store', help='The db url to connect to', default="sqlite:////tmp/janitoo_dbman.sqlite")
 
     dropdb_parser = subparsers.add_parser('dropdb', help='Drop database')
@@ -102,21 +106,6 @@ def jnt_parser():
     return parser
 
 def main():
-    #~ options = JNTOptions(options)
-    #~ engine = create_db_engine(options)
-    #~ dbmaker = sessionmaker()
-    #~ # Bind the sessionmaker to engine
-    #~ dbmaker.configure(bind=engine)
-    #~ dbsession = scoped_session(dbmaker)
-    #~ print options.data['command']
-    #~ commands = {
-        #~ 'upgrade':upgrade,
-        #~ 'downgrade':downgrade,
-        #~ 'branches':branches,
-        #~ 'heads':heads,
-        #~ 'collect':collect,
-        #~ 'initdb':initdb,
-    #~ }
     parser = jnt_parser()
     args = parser.parse_args()
     if args.command == "initdb":
@@ -124,6 +113,12 @@ def main():
     elif args.command == "createdb":
         engine = create_engine(args.url)
         Base.metadata.create_all(bind=engine)
+    elif args.command == "versiondb":
+        engine = create_engine(args.url)
+        conn = engine.connect()
+        context = MigrationContext.configure(conn)
+        current_rev = context.get_current_heads()
+        print current_rev
     elif args.command == "dropdb":
         engine = create_engine(args.url)
         Base.metadata.drop_all(bind=engine)
