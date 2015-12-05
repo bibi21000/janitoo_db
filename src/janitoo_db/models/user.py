@@ -87,8 +87,11 @@ def extend( jntmodel ):
         @classmethod
         def get_guest_group(cls):
             return Group.query.filter(cls.guest == True).first()
+
     jntmodel.Group = Group
 
+    # hack to get class pickable
+    setattr(sys.modules[__name__], 'Setting', Setting)
 
     class User(Base, CRUDMixin):
         __tablename__ = "core_users"
@@ -351,8 +354,11 @@ def extend( jntmodel ):
             db.session.commit()
 
             return self
+
     jntmodel.User = User
 
+    # hack to get class pickable
+    setattr(sys.modules[__name__], 'User', User)
 
     class Guest(object):
         @property
@@ -372,5 +378,9 @@ def extend( jntmodel ):
                     continue
                 perms[c.name] = getattr(group, c.name)
             return perms
+
     jntmodel.Guest = Guest
+
+    # hack to get class pickable
+    setattr(sys.modules[__name__], 'Guest', Guest)
 

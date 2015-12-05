@@ -45,6 +45,9 @@ def extend( jntmodel ):
                                    cascade="all, delete-orphan")
     jntmodel.SettingGroup = SettingGroup
 
+    # hack to get class pickable
+    setattr(sys.modules[__name__], 'SettingGroup', SettingGroup)
+
     class Setting(Base, CRUDMixin):
         __tablename__ = "core_settings"
 
@@ -130,3 +133,6 @@ def extend( jntmodel ):
             return settings
 
     jntmodel.Setting = Setting
+
+    # hack to get class pickable
+    setattr(sys.modules[__name__], 'Setting', Setting)
