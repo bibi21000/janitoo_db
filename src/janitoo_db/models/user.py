@@ -94,7 +94,7 @@ def extend( jntmodel ):
     jntmodel.Group = Group
 
     # hack to get class pickable
-    setattr(sys.modules[__name__], 'Setting', Setting)
+    setattr(sys.modules[__name__], 'Group', Group)
 
     class User(Base, CRUDMixin):
         __tablename__ = "core_users"
