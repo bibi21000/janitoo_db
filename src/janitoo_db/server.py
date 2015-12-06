@@ -28,7 +28,7 @@ __copyright__ = "Copyright © 2013-2014-2015 Sébastien GALLET aka bibi21000"
 
 # Set default logging handler to avoid "No handler found" warnings.
 import logging
-logger = logging.getLogger( "janitoo.db" )
+logger = logging.getLogger(__name__)
 import os, sys
 import threading
 import signal
@@ -88,7 +88,7 @@ class JNTDBServer(JNTServer):
         config = alConfig(url=alembic['sqlalchemy.url'])
         if migrate == False or (migrate is None and self.dbauto_migrate == False):
             if not config.checkdb():
-                raise JanitooException(u"Cant't find tables in database and auto_update is not enable. Please create database and tables by hand.")
+                raise JanitooException(u"Database is not up to date and auto_migrate is not enable. Please update your database by hand.")
             logger.debug(u'[%s] - Finishing quick check of database', self.__class__.__name__)
             return
         config.initdb()
