@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-"""Unittests for Datalog Server.
+"""Unittests for DHCP Server.
 """
 __license__ = """
     This file is part of Janitoo.
@@ -28,26 +28,45 @@ import time, datetime
 import unittest
 import threading
 import logging
+import time
 from pkg_resources import iter_entry_points
 
-from janitoo_nosetests.server import JNTTServer, JNTTServerCommon
+from janitoo_nosetests.dbserver import JNTTDBServer, JNTTDBServerCommon
 from janitoo_nosetests.thread import JNTTThread, JNTTThreadCommon
-SKIP = False
-try:
-    from janitoo_nosetests.packaging import JNTTPackaging, JNTTPackagingCommon
-except:
-    print "Skip tests"
-    SKIP = True
+
 from janitoo.utils import json_dumps, json_loads
 from janitoo.utils import HADD_SEP, HADD
 from janitoo.utils import TOPIC_HEARTBEAT
 from janitoo.utils import TOPIC_NODES, TOPIC_NODES_REPLY, TOPIC_NODES_REQUEST
 from janitoo.utils import TOPIC_BROADCAST_REPLY, TOPIC_BROADCAST_REQUEST
 from janitoo.utils import TOPIC_VALUES_USER, TOPIC_VALUES_CONFIG, TOPIC_VALUES_SYSTEM, TOPIC_VALUES_BASIC
+from janitoo.utils import JanitooNotImplemented, JanitooException
+from janitoo.options import JNTOptions
+from janitoo_db.server import JNTDBServer
 
-if not SKIP:
+class TestDbSerser(JNTTDBServer, JNTTDBServerCommon):
+    """Test the server
+    """
+    loglevel = logging.DEBUG
+    path = '/tmp/janitoo_test'
+    broker_user = 'toto'
+    broker_password = 'toto'
+    server_class = JNTDBServer
+    server_conf = "tests/data/janitoo_db_server.conf"
 
-    class TestPackage(JNTTPackaging, JNTTPackagingCommon):
-        """Test the DatalogServer server
-        """
-        pass
+    def test_051_dbserver_auto_migrate(self):
+        options = JNTOptions({'conf_file':self.server_conf})
+        options.load()
+        options.set_option('database','auto_migrate', False)
+        with self.assertRaises(JanitooException):
+            self.start()
+            self.assertHeartbeatNode()
+            self.stop()
+
+    def test_052_dbserver_auto_migrate(self):
+        options = JNTOptions({'conf_file':self.server_conf})
+        options.load()
+        options.set_option('database','auto_migrate', True)
+        self.start()
+        self.assertHeartbeatNode()
+        self.stop()

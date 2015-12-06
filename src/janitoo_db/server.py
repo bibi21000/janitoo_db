@@ -40,11 +40,11 @@ from alembic.config import Config as alConfig
 from alembic import command as alcommand
 from pkg_resources import iter_entry_points
 from janitoo.utils import JanitooNotImplemented, JanitooException
-from janitoo.options import JNTOptions
+from janitoo.options import JNTOptions, string_to_bool
 from janitoo.server import JNTServer
 from janitoo_db.base import Base, create_db_engine
 import janitoo_db.models as jntmodel
-from janitoo_db.migrate import Config as alConfig, collect_configs, janitoo_config
+from janitoo_db.migrate import Config as alConfig, collect_configs
 
 class JNTDBServer(JNTServer):
     """The Janitoo Server with a db connexion
@@ -74,7 +74,7 @@ class JNTDBServer(JNTServer):
         #print self.options
         alembic = self.options.get_options('database')
         self.dbengine = create_db_engine(self.options)
-        self.dbauto_migrate = bool(alembic['auto_migrate']) if 'auto_migrate' in alembic else None
+        self.dbauto_migrate = string_to_bool(alembic['auto_migrate']) if 'auto_migrate' in alembic else None
 
     def check_db(self, migrate=None):
         """Check the db version and update if needed and allowed
@@ -82,16 +82,15 @@ class JNTDBServer(JNTServer):
         """
         logger.debug(u'[%s] - Start checking database', self.__class__.__name__)
         self._create_db_engine()
-        #We must retrieve tables from database to ensure it exist
+        alembic = self.options.get_options('database')
+        config = alConfig(url=alembic['sqlalchemy.url'])
         if migrate == False or (migrate is None and self.dbauto_migrate == False):
-            #We should improve this by checking version in db and and alembic.
-            if self.dbengine.dialect.has_table(self.dbengine.connect(), "dhcp_lease") == False or self.dbengine.dialect.has_table(self.dbengine.connect(), "dhcp_lease_param") == False:
+            if not config.checkdb():
                 raise JanitooException(u"Cant't find tables in database and auto_update is not enable. Please create database and tables by hand.")
             logger.debug(u'[%s] - Finishing quick check of database', self.__class__.__name__)
             return
-        alembic = self.options.get_options('database')
-        alcommand.upgrade(janitoo_config(alembic['sqlalchemy.url']), 'heads')
-        logger.debug(u'[%s] - Finishing full check of database', self.__class__.__name__)
+        config.initdb()
+        logger.debug(u'[%s] - Finishing full check/upgrade database', self.__class__.__name__)
 
     def create_session(self):
         """Create a scoped session

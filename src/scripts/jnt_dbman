@@ -44,7 +44,7 @@ from alembic.migration import MigrationContext
 
 from janitoo.options import JNTOptions
 from janitoo_db.base import Base, create_db_engine
-from janitoo_db.migrate import Config as alConfig, collect_configs, janitoo_config
+from janitoo_db.migrate import Config as alConfig, collect_configs
 
 import janitoo_db.models
 
@@ -61,8 +61,11 @@ def jnt_parser():
     initdb_parser = subparsers.add_parser('initdb', help='Initialise database using alembic migration scripts')
     initdb_parser.add_argument('-u', '--url', action='store', help='The db url to connect to', default="sqlite:////tmp/janitoo_dbman.sqlite")
 
-    initdb_parser = subparsers.add_parser('versiondb', help='Return the database version using alembic migration context')
-    initdb_parser.add_argument('-u', '--url', action='store', help='The db url to connect to', default="sqlite:////tmp/janitoo_dbman.sqlite")
+    versiondb_parser = subparsers.add_parser('versiondb', help='Return the database version using alembic migration context')
+    versiondb_parser.add_argument('-u', '--url', action='store', help='The db url to connect to', default="sqlite:////tmp/janitoo_dbman.sqlite")
+
+    checkdb_parser = subparsers.add_parser('checkdb', help='Check the database version agaisnt heads version')
+    checkdb_parser.add_argument('-u', '--url', action='store', help='The db url to connect to', default="sqlite:////tmp/janitoo_dbman.sqlite")
 
     dropdb_parser = subparsers.add_parser('dropdb', help='Drop database')
     dropdb_parser.add_argument('-u', '--url', action='store', help='The db url to connect to', default="sqlite:////tmp/janitoo_dbman.sqlite")
@@ -109,41 +112,39 @@ def main():
     parser = jnt_parser()
     args = parser.parse_args()
     if args.command == "initdb":
-        alcommand.upgrade(janitoo_config(args.url), 'heads')
+        alConfig(url=args.url).initdb()
     elif args.command == "createdb":
-        engine = create_engine(args.url)
+        engine = create_engine(url=args.url)
         Base.metadata.create_all(bind=engine)
     elif args.command == "versiondb":
-        engine = create_engine(args.url)
-        conn = engine.connect()
-        context = MigrationContext.configure(conn)
-        current_rev = context.get_current_heads()
-        print current_rev
+        print alConfig(url=args.url).versiondb()
+    elif args.command == "checkdb":
+        print alConfig(url=args.url).checkdb()
     elif args.command == "dropdb":
-        engine = create_engine(args.url)
+        engine = create_engine(url=args.url)
         Base.metadata.drop_all(bind=engine)
     elif args.command == "collect":
         for entrypoint in pkg_resources.iter_entry_points(group='janitoo.models'):
             print("Found extension %s provided by module %s"%(entrypoint.name, entrypoint.module_name))
     elif args.command == "version_locations":
-        config = janitoo_config(args.url)
+        config = alConfig(url=args.url)
         print "version_locations = %s" % config.get_main_option("version_locations")
     elif args.command == "heads":
-        alcommand.heads(janitoo_config(args.url), verbose=True)
+        print alConfig(url=args.url).heads(verbose=True)
     elif args.command == "branches":
-        alcommand.branches(janitoo_config(args.url), verbose=True)
+        alcommand.branches(alConfig(url=args.url), verbose=True)
     elif args.command == "upgrade":
-        alcommand.upgrade(janitoo_config(args.url), 'heads')
+        alConfig(url=args.url).upgrade(revision='heads')
     elif args.command == "downgrade":
-        alcommand.downgrade(janitoo_config(args.url), 'base')
+        alConfig(url=args.url).downgrade(revision='base')
     elif args.command == "current":
-        alcommand.current(janitoo_config(args.url), verbose=args.verbose)
+        alcommand.current(alConfig(url=args.url), verbose=args.verbose)
     elif args.command == "show":
-        alcommand.show(janitoo_config(args.url), args.revision)
+        alcommand.show(alConfig(url=args.url), args.revision)
     elif args.command == "history":
-        alcommand.history(janitoo_config(args.url), args.revrange, verbose=args.verbose)
+        alcommand.history(alConfig(url=args.url), args.revrange, verbose=args.verbose)
     elif args.command == "generate":
-        alcommand.revision(janitoo_config(args.url), message=args.message, head="%s@head"%args.head, autogenerate=True)
+        alcommand.revision(alConfig(url=args.url), message=args.message, head="%s@head"%args.head, autogenerate=True)
 
 if __name__ == '__main__':
     main()
