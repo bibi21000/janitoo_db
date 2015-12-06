@@ -53,20 +53,3 @@ class TestDbSerser(JNTTDBServer, JNTTDBServerCommon):
     broker_password = 'toto'
     server_class = JNTDBServer
     server_conf = "tests/data/janitoo_db_server.conf"
-
-    def test_051_dbserver_auto_migrate(self):
-        options = JNTOptions({'conf_file':self.server_conf})
-        options.load()
-        options.set_option('database','auto_migrate', False)
-        with self.assertRaises(JanitooException):
-            self.start()
-            self.assertHeartbeatNode()
-            self.stop()
-
-    def test_052_dbserver_auto_migrate(self):
-        options = JNTOptions({'conf_file':self.server_conf})
-        options.load()
-        options.set_option('database','auto_migrate', True)
-        self.start()
-        self.assertHeartbeatNode()
-        self.stop()
