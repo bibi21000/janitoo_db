@@ -70,11 +70,13 @@ class JNTDBServer(JNTServer):
         """Create the sql alchemy engine
         """
         logger.debug(u'[%s] - Create db engine', self.__class__.__name__)
-        self.stop_db()
+        #~ self.stop_db()
         #print self.options
+        if self.dbengine is not None:
+            return True
         alembic = self.options.get_options('database')
-        self.dbengine = create_db_engine(self.options)
         self.dbauto_migrate = string_to_bool(alembic['auto_migrate']) if 'auto_migrate' in alembic else None
+        self.dbengine = create_db_engine(self.options)
 
     def check_db(self, migrate=None):
         """Check the db version and update if needed and allowed
@@ -127,8 +129,8 @@ class JNTDBServer(JNTServer):
     def start(self):
         """Start the server. Must be called at the end of the children class.
         """
-        JNTServer.start(self)
         self.start_db()
+        JNTServer.start(self)
 
     def stop(self):
         """Stop the server the server. Must be called at end of the children class
