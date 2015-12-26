@@ -56,7 +56,7 @@ def extend( jntmodel ):
 
         key = sa.Column(sa.String(255), primary_key=True)
         value = sa.Column(sa.PickleType, nullable=False)
-        settinggroup = sa.Column(sa.String,
+        settinggroup = sa.Column(sa.String(255),
                                   sa.ForeignKey('core_settings_group.key',
                                                 use_alter=True,
                                                 name="fk_settings_group"),
