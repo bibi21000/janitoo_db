@@ -42,27 +42,27 @@ for arg in sys.argv:
         filtered_args.append(arg)
 sys.argv = filtered_args
 
-def data_files_config(target, source, pattern):
-    ret = list()
-    ret.append((target, glob.glob(os.path.join(source,pattern))))
-    dirs = [x for x in glob.iglob(os.path.join( source, '*')) if os.path.isdir(x) ]
-    for d in dirs:
-        rd = d.replace(source+os.sep, "", 1)
-        ret.extend(data_files_config(os.path.join(target,rd), os.path.join(source,rd), pattern))
-    return ret
+def data_files_config(res, rsrc, src, pattern):
+    print rsrc, src
+    for root, dirs, fils in os.walk(src):
+        print src, root, dirs, fils
+        if src == root:
+            sub = []
+            for fil in fils:
+                sub.append(os.path.join(root,fil))
+            res.append((rsrc, sub))
+        for dire in dirs:
+                data_files_config(res, os.path.join(rsrc, dire), os.path.join(root, dire), pattern)
 
-data_files = data_files_config('docs','src/docs','*.rst')
-data_files.extend(data_files_config('docs','src/docs','*.md'))
-data_files.extend(data_files_config('docs','src/docs','*.txt'))
-data_files.extend(data_files_config('docs','src/docs','*.png'))
-data_files.extend(data_files_config('docs','src/docs','*.jpg'))
-data_files.extend(data_files_config('docs','src/docs','*.gif'))
-
-data_files.extend(data_files_config('config','src/config','*.conf'))
-data_files.extend(data_files_config('config','src/config','*.py'))
-data_files.extend(data_files_config('config','src/config','*.mako'))
-data_files.extend(data_files_config('config','src/config','README'))
-
+data_files = []
+data_files_config(data_files, 'templates','src/janitoo_manager_proxy/templates/','*')
+data_files_config(data_files, 'themes','src/janitoo_manager_proxy/themes/','*')
+data_files_config(data_files, 'static','src/janitoo_manager_proxy/static/','*')
+data_files_config(data_files, 'docs','src/docs/','*')
+data_files_config(data_files, 'config','src/config','*.py')
+data_files_config(data_files, 'config','src/config','*.conf')
+data_files_config(data_files, 'config','src/config','*.mako')
+data_files_config(data_files, 'config','src/config','README')
 
 setup(
     name = 'janitoo_db',
