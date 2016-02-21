@@ -56,3 +56,4 @@ class TestDbSerser(JNTTDBServer, JNTTDBServerCommon):
     broker_password = 'toto'
     server_class = JNTDBServer
     server_conf = "tests/data/janitoo_db_server.conf"
+    hadds = [HADD%(2218,0)]
