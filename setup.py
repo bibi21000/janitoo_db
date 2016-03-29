@@ -94,7 +94,7 @@ setup(
     packages = find_packages('src', exclude=["scripts", "docs", "config"]),
     package_dir = { '': 'src' },
     install_requires=[
-                     'janitoo == %s'%janitoo_version,
+                     'janitoo',
                      'pysqlite >= 2.6.3',
                      'SQLAlchemy >= 1.0.6',
                      'SQLAlchemy-Utils',
@@ -102,6 +102,6 @@ setup(
                      'itsdangerous',
                     ],
     dependency_links = [
-      'https://github.com/bibi21000/janitoo/archive/master.zip#egg=janitoo-%s'%janitoo_version,
+      'https://github.com/bibi21000/janitoo/archive/master.zip#egg=janitoo',
     ],
 )
