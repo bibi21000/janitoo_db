@@ -35,10 +35,10 @@ import mock
 import logging
 
 from janitoo_nosetests import JNTTBase
-from janitoo_nosetests.server import JNTTDBDockerServerCommon, JNTTDBDockerServer
+from janitoo_nosetests.dbserver import JNTTDBDockerServerCommon, JNTTDBDockerServer
 
 from janitoo.runner import Runner, jnt_parse_args
-from janitoo.server import JNTServer
+from janitoo_db.server import JNTDBServer
 from janitoo.utils import HADD_SEP, HADD
 
 class TestDBSerser(JNTTDBDockerServer, JNTTDBDockerServerCommon):
