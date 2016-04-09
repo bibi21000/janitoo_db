@@ -50,3 +50,4 @@ class TestDBSerser(JNTTDBDockerServer, JNTTDBDockerServerCommon):
     server_class = JNTDBServer
     server_conf = "tests/data/janitoo_db_server.conf"
     hadds = [HADD%(2218,0)]
+
