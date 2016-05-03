@@ -36,10 +36,21 @@ import logging
 
 from janitoo_nosetests import JNTTBase
 from janitoo_nosetests.dbserver import JNTTDBDockerServerCommon, JNTTDBDockerServer
+from janitoo_nosetests.models import JNTTDockerModels
 
 from janitoo.runner import Runner, jnt_parse_args
 from janitoo_db.server import JNTDBServer
 from janitoo.utils import HADD_SEP, HADD
+
+sys.path.insert(0, os.path.abspath('.'))
+
+from test_models import ModelsCommon
+
+class TestModels(JNTTDockerModels, ModelsCommon):
+    """Test the models
+    """
+    models_conf = "tests/data/janitoo_db.conf"
+
 
 class TestDBSerser(JNTTDBDockerServer, JNTTDBDockerServerCommon):
     """Test the server

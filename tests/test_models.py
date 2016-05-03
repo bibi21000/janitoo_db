@@ -43,7 +43,17 @@ from janitoo_db.base import Base, create_db_engine
 
 import janitoo_db.models as jntmodels
 
-class TestModels(JNTTModels):
+class ModelsCommon():
+    """Test the models
+    """
+
+    def test_001_user(self):
+        group = jntmodels.Group(name="test_group")
+        user = jntmodels.User(username="test_user", email="test@gmail.com", _password="test", primary_group=group)
+        self.dbsession.merge(group, user)
+        self.dbsession.commit()
+
+class TestModels(JNTTModels, ModelsCommon):
     """Test the models
     """
     models_conf = "tests/data/janitoo_db.conf"
