@@ -49,8 +49,7 @@ from test_models import ModelsCommon
 class TestModels(JNTTDockerModels, ModelsCommon):
     """Test the models
     """
-    models_conf = "tests/data/janitoo_db.conf"
-
+    pass
 
 class TestDBSerser(JNTTDBDockerServer, JNTTDBDockerServerCommon):
     """Test the server
