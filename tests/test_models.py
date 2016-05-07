@@ -57,9 +57,3 @@ class TestModels(JNTTModels, ModelsCommon):
     """Test the models
     """
     models_conf = "tests/data/janitoo_db.conf"
-
-    def test_001_user(self):
-        group = jntmodels.Group(name="test_group")
-        user = jntmodels.User(username="test_user", email="test@gmail.com", _password="test", primary_group=group)
-        self.dbsession.merge(group, user)
-        self.dbsession.commit()
