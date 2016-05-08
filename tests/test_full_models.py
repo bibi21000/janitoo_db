@@ -36,13 +36,25 @@ from pkg_resources import iter_entry_points
 from sqlalchemy.orm import sessionmaker, scoped_session
 
 from janitoo_nosetests import JNTTBase
+from janitoo_nosetests.models import JNTTFullModels, JNTTFullModelsCommon
+from janitoo_nosetests.models import JNTTModels
 
 from janitoo.options import JNTOptions
 from janitoo_db.base import Base, create_db_engine
 
 import janitoo_db.models as jnt_models
 
-class TestFullModels(JNTTBase):
+class CommonFullModels(JNTTFullModelsCommon):
+    """Test the full model
+    """
+    pass
+
+class TestFullModels(JNTTFullModels, CommonFullModels):
+    """Test the full model
+    """
+    pass
+
+class TestFullModels2(JNTTBase):
     """Test the DatalogServer server
     """
     def setUp(self):

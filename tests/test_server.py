@@ -47,7 +47,7 @@ from janitoo.utils import JanitooNotImplemented, JanitooException
 from janitoo.options import JNTOptions
 from janitoo_db.server import JNTDBServer
 
-class TestDbSerser(JNTTDBServer, JNTTDBServerCommon):
+class CommonDbSerser(JNTTDBServerCommon):
     """Test the server
     """
     loglevel = logging.DEBUG
@@ -57,6 +57,10 @@ class TestDbSerser(JNTTDBServer, JNTTDBServerCommon):
     server_class = JNTDBServer
     server_conf = "tests/data/janitoo_db_server.conf"
     hadds = [HADD%(2218,0)]
+
+class TestDbSerser(JNTTDBServer, CommonDbSerser):
+    """Test the server
+    """
 
     def test_040_server_start_no_error_in_log(self):
         self.wipTest()

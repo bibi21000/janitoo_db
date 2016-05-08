@@ -35,8 +35,8 @@ import mock
 import logging
 
 from janitoo_nosetests import JNTTBase
-from janitoo_nosetests.dbserver import JNTTDBDockerServerCommon, JNTTDBDockerServer
-from janitoo_nosetests.models import jntt_docker_models
+from janitoo_nosetests.dbserver import JNTTDBDockerServerCommon, JNTTDBDockerServer, jntt_docker_dbserver
+from janitoo_nosetests.models import jntt_docker_models, jntt_docker_fulmodels
 
 from janitoo.runner import Runner, jnt_parse_args
 from janitoo_db.server import JNTDBServer
@@ -45,9 +45,17 @@ from janitoo.utils import HADD_SEP, HADD
 sys.path.insert(0, os.path.abspath('.'))
 
 from test_models import ModelsCommon
-
 #Launch ModelsCommon tests for every supported database
 jntt_docker_models(__name__, ModelsCommon)
+
+from test_full_models import CommonFullModels
+#Launch ModelsCommon tests for every supported database
+jntt_docker_fulmodels(__name__, CommonFullModels)
+
+from test_server import CommonDbSerser
+#Launch DhcpServerCommon tests for every supported database
+jntt_docker_dbserver(__name__, CommonDbSerser)
+
 
 class TestDBSerser(JNTTDBDockerServer, JNTTDBDockerServerCommon):
     """Test the server
