@@ -47,7 +47,7 @@ from janitoo.utils import JanitooNotImplemented, JanitooException
 from janitoo.options import JNTOptions
 from janitoo_db.server import JNTDBServer
 
-class CommonDbSerser(JNTTDBServerCommon):
+class CommonDbSerser():
     """Test the server
     """
     loglevel = logging.DEBUG
@@ -86,7 +86,7 @@ class CommonDbSerser(JNTTDBServerCommon):
         time.sleep(self.shortdelay)
         self.assertNotInLogfile('^ERROR ')
 
-class TestDbSerser(CommonDbSerser, JNTTDBServer ):
+class TestDbSerser(CommonDbSerser, JNTTDBServer, JNTTDBServerCommon ):
     """Test the server
     """
     pass
