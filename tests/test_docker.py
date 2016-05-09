@@ -53,42 +53,6 @@ from test_full_models import CommonFullModels
 jntt_docker_fullmodels(__name__, CommonFullModels)
 
 from test_server import CommonDbSerser
-#Launch DhcpServerCommon tests for every supported database
+#Launch CommonDbSerser tests for every supported database
 jntt_docker_dbserver(__name__, CommonDbSerser)
 
-
-class TestDBSerser(JNTTDBDockerServer, JNTTDBDockerServerCommon):
-    """Test the server
-    """
-    path = '/tmp/janitoo_test'
-    broker_user = 'toto'
-    broker_password = 'toto'
-    server_class = JNTDBServer
-    server_conf = "tests/data/janitoo_db_server.conf"
-    hadds = [HADD%(2218,0)]
-
-    def test_040_server_start_no_error_in_log(self):
-        self.start()
-        time.sleep(5)
-        if self.server_section:
-            print "Look for thread %s"%self.server_section
-            thread = self.server.find_thread(self.server_section)
-            self.assertNotEqual(thread, None)
-            self.assertIsInstance(thread, JNTBusThread)
-        self.waitHeartbeatNodes(hadds=self.hadds)
-        time.sleep(self.longdelay)
-        #~ self.assertInLogfile('Start the server')
-        self.assertInLogfile('Connected to broker')
-        self.assertInLogfile('Found heartbeats in timeout')
-        print "Reload server"
-        self.server.reload()
-        time.sleep(5)
-        self.waitHeartbeatNodes(hadds=self.hadds)
-        time.sleep(self.shortdelay)
-        #~ self.assertInLogfile('Reload the server')
-        print "Reload threads"
-        self.server.reload_threads()
-        time.sleep(5)
-        self.waitHeartbeatNodes(hadds=self.hadds)
-        time.sleep(self.shortdelay)
-        self.assertInLogfile('Reload threads')
