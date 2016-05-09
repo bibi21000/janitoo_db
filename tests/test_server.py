@@ -86,7 +86,7 @@ class CommonDbSerser():
         time.sleep(self.shortdelay)
         self.assertNotInLogfile('^ERROR ')
 
-class TestDbSerser(CommonDbSerser, JNTTDBServer, JNTTDBServerCommon ):
+class TestDbSerser(JNTTDBServerCommon, CommonDbSerser, JNTTDBServer):
     """Test the server
     """
     pass
