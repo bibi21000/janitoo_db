@@ -120,7 +120,7 @@ class JNTDBServer(JNTServer):
         """Close the db connection
         """
         if self.dbsession is not None:
-            self.dbsession.rollback()
+            self.dbsession.commit()
             self.dbsession.close()
             self.dbsession = None
         if self.dbmaker is not None:
