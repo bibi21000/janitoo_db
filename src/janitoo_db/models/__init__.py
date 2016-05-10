@@ -22,11 +22,6 @@ __author__ = 'Sébastien GALLET aka bibi21000'
 __email__ = 'bibi21000@gmail.com'
 import logging
 logger = logging.getLogger(__name__)
-#~ try:
-    #~ __import__('pkg_resources').declare_namespace(__name__)
-#~ except:  # pragma: no cover
-    #~ # bootstrapping
-    #~ pass # pragma: no cover
 
 import sys
 from os.path import dirname, basename, isfile

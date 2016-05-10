@@ -70,8 +70,10 @@ class CommonDbSerser():
         time.sleep(self.longdelay)
         self.assertNotInLogfile('^ERROR ')
         #~ self.assertInLogfile('Start the server')
-        self.assertInLogfile('Connected to broker')
-        self.assertInLogfile('Found heartbeats in timeout')
+        #~ self.assertInLogfile('Connected to broker')
+        #~ self.assertInLogfile('Found heartbeats in timeout')
+        self.assertInLogfile('Start checking database')
+        self.assertInLogfile('Start the bus')
         print "Reload server"
         self.server.reload()
         time.sleep(5)

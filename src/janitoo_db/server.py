@@ -77,6 +77,7 @@ class JNTDBServer(JNTServer):
         alembic = self.options.get_options('database')
         self.dbauto_migrate = string_to_bool(alembic['auto_migrate']) if 'auto_migrate' in alembic else None
         self.dbengine = create_db_engine(self.options)
+        return True
 
     def check_db(self, migrate=None):
         """Check the db version and update if needed and allowed
@@ -89,10 +90,13 @@ class JNTDBServer(JNTServer):
         if migrate == False or (migrate is None and self.dbauto_migrate == False):
             if not config.checkdb():
                 raise JanitooException(u"Database is not up to date and auto_migrate is not enable. Please update your database by hand.")
-            logger.debug(u'[%s] - Finishing quick check of database', self.__class__.__name__)
-            return
-        config.initdb()
-        logger.debug(u'[%s] - Finishing full check/upgrade database', self.__class__.__name__)
+            logger.debug(u'[%s] - Quick check of database', self.__class__.__name__)
+        elif not config.checkdb():
+            config.initdb()
+            logger.debug(u'[%s] - Check/upgrade database', self.__class__.__name__)
+        else:
+            logger.debug(u'[%s] - Finishing check database', self.__class__.__name__)
+        return True
 
     def create_session(self):
         """Create a scoped session
