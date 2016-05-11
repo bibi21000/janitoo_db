@@ -48,6 +48,7 @@ class ModelsCommon(JNTTModelsCommon):
     """
 
     def test_001_user(self):
+        self.create_all()
         group = jntmodels.Group(name="test_group")
         user = jntmodels.User(username="test_user", email="test@gmail.com", _password="test", primary_group=group)
         self.dbsession.merge(group, user)
