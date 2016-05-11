@@ -50,9 +50,9 @@ jntt_docker_models(__name__, ModelsCommon, prefix='Db')
 
 from test_full_models import CommonFullModels
 #Launch ModelsCommon tests for every supported database
-jntt_docker_fullmodels(__name__, CommonFullModels)
+jntt_docker_fullmodels(__name__, CommonFullModels, prefix='Db')
 
 from test_server import CommonDbSerser
 #Launch CommonDbSerser tests for every supported database
-jntt_docker_dbserver(__name__, CommonDbSerser)
+jntt_docker_dbserver(__name__, CommonDbSerser, prefix='Db')
 
