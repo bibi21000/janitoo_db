@@ -59,6 +59,7 @@ class CommonDbSerser():
     hadds = [HADD%(2218,0)]
 
     def test_040_server_start_no_error_in_log(self):
+        self.wipTest()
         self.start()
         time.sleep(5)
         if self.server_section:
@@ -88,7 +89,7 @@ class CommonDbSerser():
         time.sleep(self.shortdelay)
         self.assertNotInLogfile('^ERROR ')
 
-class TestDbSerser(JNTTDBServerCommon, CommonDbSerser, JNTTDBServer):
+class TestDbSerser(CommonDbSerser, JNTTDBServerCommon, JNTTDBServer):
     """Test the server
     """
     pass
