@@ -18,7 +18,7 @@ It's important that the entry_point name match the version-path parameter and th
 
 Develop your setup :
 
-..code: bash
+.. code:: bash
 
     python setup.py develop
 
@@ -28,19 +28,19 @@ Initialise alembic
 
 Update the database section in the config file:
 
-..code: bash
+.. code:: bash
 
     version_locations = %(here)s/models/janitoo_template
 
 
 And the bash helper script:
 
-..code: bash
+.. code:: bash
 
     vi alembic.sh
 
 
-..code: bash
+.. code:: bash
 
     #!/bin/bash
     alembic -c janitoo_template.conf -n database $* --version-path=models/janitoo_template
@@ -48,18 +48,18 @@ And the bash helper script:
 
 Create a new SQL version management for your project :
 
-..code: bash
+.. code:: bash
 
     alembic -c janitoo_template.conf init alembic
 
 Create a new labelled branch for your project :
 
-..code: bash
+.. code:: bash
     alembic -c janitoo_template.conf -n database  revision -m "Create janitoo_template branch" --head=base --branch-label=janitoo_template --version-path=models/janitoo_template
 
 Update env.py
 
-..code: bash
+.. code:: bash
     #~ target_metadata = None
     from janitoo_db.base import Base
     target_metadata = Base.metadata
@@ -72,7 +72,7 @@ jnt_dman allows you to work on an offline database.
 
 Create a database from migration scripts :
 
-..code: bash
+.. code:: bash
 
     jnt_dbman initdb
 
@@ -81,14 +81,14 @@ This will create the database using the default url : "sqlite:////tmp/janitoo_db
 
 Create a database from models :
 
-..code: bash
+.. code:: bash
 
     jnt_dbman createdb
 
 
 Drop the database :
 
-..code: bash
+.. code:: bash
 
     jnt_dbman dropdb
 
@@ -100,21 +100,21 @@ Each extension (janitoo included) has its branch :
 
 Show all extension heads :
 
-..code: bash
+.. code:: bash
 
     jnt_dbman heads
 
 
 Check full history of your extension :
 
-..code: bash
+.. code:: bash
 
     jnt_dbman history --revrange=janitoo_template:
 
 
 Generate the migration script for your extension :
 
-..code: bash
+.. code:: bash
 
     jnt_dbman generate -m "Initial import" --head=janitoo_template
 
@@ -126,7 +126,7 @@ Using alembic
 
 You can also use alembic to manage the models. You need to generate a copy of the version_locations to include in your alembic.ini using :
 
-..code: bash
+.. code:: bash
 
     jnt_dbman version_locations
 
