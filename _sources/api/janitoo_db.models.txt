@@ -1,0 +1,30 @@
+janitoo_db.models package
+=========================
+
+Submodules
+----------
+
+janitoo_db.models.user module
+-----------------------------
+
+.. automodule:: janitoo_db.models.user
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+janitoo_db.models.utils module
+------------------------------
+
+.. automodule:: janitoo_db.models.utils
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: janitoo_db.models
+    :members:
+    :undoc-members:
+    :show-inheritance:

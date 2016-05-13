@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Unit Test Report</title>
+    <meta name="generator" content="HTMLTestRunner 0.8.1"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    
+<style type="text/css" media="screen">
+body        { font-family: verdana, arial, helvetica, sans-serif; font-size: 80%; }
+table       { font-size: 100%; }
+pre         { }
+
+/* -- heading ---------------------------------------------------------------------- */
+h1 {
+}
+.heading {
+    margin-top: 0ex;
+    margin-bottom: 1ex;
+}
+
+.heading .attribute {
+    margin-top: 1ex;
+    margin-bottom: 0;
+}
+
+.heading .description {
+    margin-top: 4ex;
+    margin-bottom: 6ex;
+}
+
+/* -- report ------------------------------------------------------------------------ */
+#show_detail_line {
+    margin-top: 3ex;
+    margin-bottom: 1ex;
+}
+#result_table {
+    width: 80%;
+    border-collapse: collapse;
+    border: medium solid #777;
+}
+#header_row {
+    font-weight: bold;
+    color: white;
+    background-color: #777;
+}
+#result_table td {
+    border: thin solid #777;
+    padding: 2px;
+}
+#total_row  { font-weight: bold; }
+.passClass  { background-color: #6c6; }
+.failClass  { background-color: #c60; }
+.errorClass { background-color: #c00; }
+.passCase   { color: #6c6; }
+.failCase   { color: #c60; font-weight: bold; }
+.errorCase  { color: #c00; font-weight: bold; }
+.hiddenRow  { display: none; }
+.testcase   { margin-left: 2em; }
+
+
+/* -- ending ---------------------------------------------------------------------- */
+#ending {
+}
+
+</style>
+
+</head>
+<body>
+<script language="javascript" type="text/javascript"><!--
+output_list = Array();
+
+/* level - 0:Summary; 1:Failed; 2:All */
+function showCase(level) {
+    trs = document.getElementsByTagName("tr");
+    for (var i = 0; i < trs.length; i++) {
+        tr = trs[i];
+        id = tr.id;
+        if (id.substr(0,2) == 'ft') {
+            if (level < 1) {
+                tr.className = 'hiddenRow';
+            }
+            else {
+                tr.className = '';
+            }
+        }
+        if (id.substr(0,2) == 'pt') {
+            if (level > 1) {
+                tr.className = '';
+            }
+            else {
+                tr.className = 'hiddenRow';
+            }
+        }
+    }
+}
+
+function showClassDetail(cid, count) {
+    var id_list = Array(count);
+    var toHide = 1;
+    for (var i = 0; i < count; i++) {
+        tid0 = 't' + cid.substr(1) + '.' + (i+1);
+        tid = 'f' + tid0;
+        tr = document.getElementById(tid);
+        if (!tr) {
+            tid = 'p' + tid0;
+            tr = document.getElementById(tid);
+        }
+        id_list[i] = tid;
+        if (tr.className) {
+            toHide = 0;
+        }
+    }
+    for (var i = 0; i < count; i++) {
+        tid = id_list[i];
+        if (toHide) {
+            document.getElementById(tid).className = 'hiddenRow';
+        }
+        else {
+            document.getElementById(tid).className = '';
+        }
+    }
+}
+
+function html_escape(s) {
+    s = s.replace(/&/g,'&amp;');
+    s = s.replace(/</g,'&lt;');
+    s = s.replace(/>/g,'&gt;');
+    return s;
+}
+
+function showOutput(id, name) {
+    var w = window.open("", //url
+                    name,
+                    "resizable,scrollbars,status,width=800,height=450");
+    d = w.document;
+    d.write("<pre>");
+    d.write(html_escape(output_list[id]));
+    d.write("\n");
+    d.write("<a href='javascript:window.close()'>close</a>\n");
+    d.write("</pre>\n");
+    d.close();
+}
+--></script>
+
+<div class='heading'>
+<h1>Unit Test Report</h1>
+<p class='attribute'><strong>Start Time:</strong> 2016-04-01 14:47:13</p>
+<p class='attribute'><strong>Duration:</strong> 0:00:25.670516</p>
+<p class='attribute'><strong>Status:</strong> Pass 6 Error 8</p>
+
+<p class='description'></p>
+</div>
+
+
+
+<p id='show_detail_line'>Show
+<a href='javascript:showCase(0)'>Summary</a>
+<a href='javascript:showCase(1)'>Failed</a>
+<a href='javascript:showCase(2)'>All</a>
+</p>
+<table id='result_table'>
+<colgroup>
+<col align='left' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+</colgroup>
+<tr id='header_row'>
+    <td>Test Group/Test case</td>
+    <td>Time</td>
+    <td>Count</td>
+    <td>Pass</td>
+    <td>Fail</td>
+    <td>Error</td>
+    <td>View</td>
+</tr>
+
+<tr class='passClass'>
+    <td>tests.test_migrate:TestMigrate</td>
+    <td>18.05</td>
+    <td>4</td>
+    <td>4</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c1',4)">Detail</a></td>
+</tr>
+
+<tr id='pt1.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_alembic_version</div></td>
+    <td>0.01</td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_compare_type</div></td>
+    <td>7.01</td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_custom_directory</div></td>
+    <td>5.06</td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_migrate_upgrade</div></td>
+    <td>5.05</td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr class='passClass'>
+    <td>tests.test_full_models:TestFullModels: Test the DatalogServer server</td>
+    <td>1.02</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c2',1)">Detail</a></td>
+</tr>
+
+<tr id='pt2.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_001_engine</div></td>
+    <td>1.02</td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr class='passClass'>
+    <td>tests.test_package:TestPackage: Test the DatalogServer server</td>
+    <td>0.00</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c3',1)">Detail</a></td>
+</tr>
+
+<tr id='pt3.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_001_check_package</div></td>
+    <td>0.00</td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr class='errorClass'>
+    <td>tests.test_server:TestDbSerser: Test the server</td>
+    <td>0.00</td>
+    <td>7</td>
+    <td>0</td>
+    <td>0</td>
+    <td>7</td>
+    <td><a href="javascript:showClassDetail('c4',7)">Detail</a></td>
+</tr>
+
+<tr id='ft4.1' class='none'>
+    <td class='errorCase'><div class='testcase'>test_010_start_heartbeat_stop</div></td>
+    <td>0.00</td>
+    <td colspan='5' align='center'><a href="javascript:showOutput('ft4.1', 'test_010_start_heartbeat_stop')">error</a>
+<script language="javascript" type="text/javascript">output_list['ft4.1'] = 'Traceback (most recent call last):\n  File \"/usr/lib/python2.7/unittest/case.py\", line 331, in run\n    testMethod()\n  File \"/home/sebastien/devel/janitoo/janitoo_nosetests/src/janitoo_nosetests/server.py\", line 392, in test_010_start_heartbeat_stop\n    self.start()\n  File \"/home/sebastien/devel/janitoo/janitoo_nosetests/src/janitoo_nosetests/server.py\", line 147, in start\n    self.startServer()\n  File \"/home/sebastien/devel/janitoo/janitoo_nosetests/src/janitoo_nosetests/server.py\", line 127, in startServer\n    with mock.patch(\'sys.argv\', [\'%s\'%self.server_class, \'start\', \'--conf_file=%s\' % self.getDataFile(self.server_conf)]):\n  File \"/home/sebastien/devel/janitoo/janitoo_nosetests/src/janitoo_nosetests/__init__.py\", line 299, in getDataFile\n    raise RuntimeError(\"[%s] : Can\'t find data file %s\"%(self.__class__.__name__, path))\nRuntimeError: [TestDbSerser] : Can\'t find data file tests/data/janitoo_db_server.conf\n';</script>
+</td>
+</tr>
+
+<tr id='ft4.2' class='none'>
+    <td class='errorCase'><div class='testcase'>test_011_start_reload_stop</div></td>
+    <td>0.00</td>
+    <td colspan='5' align='center'><a href="javascript:showOutput('ft4.2', 'test_011_start_reload_stop')">error</a>
+<script language="javascript" type="text/javascript">output_list['ft4.2'] = 'Traceback (most recent call last):\n  File \"/usr/lib/python2.7/unittest/case.py\", line 331, in run\n    testMethod()\n  File \"/home/sebastien/devel/janitoo/janitoo_nosetests/src/janitoo_nosetests/server.py\", line 400, in test_011_start_reload_stop\n    self.start()\n  File \"/home/sebastien/devel/janitoo/janitoo_nosetests/src/janitoo_nosetests/server.py\", line 147, in start\n    self.startServer()\n  File \"/home/sebastien/devel/janitoo/janitoo_nosetests/src/janitoo_nosetests/server.py\", line 127, in startServer\n    with mock.patch(\'sys.argv\', [\'%s\'%self.server_class, \'start\', \'--conf_file=%s\' % self.getDataFile(self.server_conf)]):\n  File \"/home/sebastien/devel/janitoo/janitoo_nosetests/src/janitoo_nosetests/__init__.py\", line 299, in getDataFile\n    raise RuntimeError(\"[%s] : Can\'t find data file %s\"%(self.__class__.__name__, path))\nRuntimeError: [TestDbSerser] : Can\'t find data file tests/data/janitoo_db_server.conf\n';</script>
+</td>
+</tr>
+
+<tr id='ft4.3' class='none'>
+    <td class='errorCase'><div class='testcase'>test_012_start_reload_threads_stop</div></td>
+    <td>0.00</td>
+    <td colspan='5' align='center'><a href="javascript:showOutput('ft4.3', 'test_012_start_reload_threads_stop')">error</a>
+<script language="javascript" type="text/javascript">output_list['ft4.3'] = 'Traceback (most recent call last):\n  File \"/usr/lib/python2.7/unittest/case.py\", line 331, in run\n    testMethod()\n  File \"/home/sebastien/devel/janitoo/janitoo_nosetests/src/janitoo_nosetests/server.py\", line 412, in test_012_start_reload_threads_stop\n    self.start()\n  File \"/home/sebastien/devel/janitoo/janitoo_nosetests/src/janitoo_nosetests/server.py\", line 147, in start\n    self.startServer()\n  File \"/home/sebastien/devel/janitoo/janitoo_nosetests/src/janitoo_nosetests/server.py\", line 127, in startServer\n    with mock.patch(\'sys.argv\', [\'%s\'%self.server_class, \'start\', \'--conf_file=%s\' % self.getDataFile(self.server_conf)]):\n  File \"/home/sebastien/devel/janitoo/janitoo_nosetests/src/janitoo_nosetests/__init__.py\", line 299, in getDataFile\n    raise RuntimeError(\"[%s] : Can\'t find data file %s\"%(self.__class__.__name__, path))\nRuntimeError: [TestDbSerser] : Can\'t find data file tests/data/janitoo_db_server.conf\n';</script>
+</td>
+</tr>
+
+<tr id='ft4.4' class='none'>
+    <td class='errorCase'><div class='testcase'>test_020_request_broadcast</div></td>
+    <td>0.00</td>
+    <td colspan='5' align='center'><a href="javascript:showOutput('ft4.4', 'test_020_request_broadcast')">error</a>
+<script language="javascript" type="text/javascript">output_list['ft4.4'] = 'Traceback (most recent call last):\n  File \"/usr/lib/python2.7/unittest/case.py\", line 331, in run\n    testMethod()\n  File \"/home/sebastien/devel/janitoo/janitoo_nosetests/src/janitoo_nosetests/server.py\", line 426, in test_020_request_broadcast\n    self.start()\n  File \"/home/sebastien/devel/janitoo/janitoo_nosetests/src/janitoo_nosetests/server.py\", line 147, in start\n    self.startServer()\n  File \"/home/sebastien/devel/janitoo/janitoo_nosetests/src/janitoo_nosetests/server.py\", line 127, in startServer\n    with mock.patch(\'sys.argv\', [\'%s\'%self.server_class, \'start\', \'--conf_file=%s\' % self.getDataFile(self.server_conf)]):\n  File \"/home/sebastien/devel/janitoo/janitoo_nosetests/src/janitoo_nosetests/__init__.py\", line 299, in getDataFile\n    raise RuntimeError(\"[%s] : Can\'t find data file %s\"%(self.__class__.__name__, path))\nRuntimeError: [TestDbSerser] : Can\'t find data file tests/data/janitoo_db_server.conf\n';</script>
+</td>
+</tr>
+
+<tr id='ft4.5' class='none'>
+    <td class='errorCase'><div class='testcase'>test_030_wait_for_all_nodes</div></td>
+    <td>0.00</td>
+    <td colspan='5' align='center'><a href="javascript:showOutput('ft4.5', 'test_030_wait_for_all_nodes')">error</a>
+<script language="javascript" type="text/javascript">output_list['ft4.5'] = 'Traceback (most recent call last):\n  File \"/usr/lib/python2.7/unittest/case.py\", line 331, in run\n    testMethod()\n  File \"/home/sebastien/devel/janitoo/janitoo_nosetests/src/janitoo_nosetests/server.py\", line 446, in test_030_wait_for_all_nodes\n    self.start()\n  File \"/home/sebastien/devel/janitoo/janitoo_nosetests/src/janitoo_nosetests/server.py\", line 147, in start\n    self.startServer()\n  File \"/home/sebastien/devel/janitoo/janitoo_nosetests/src/janitoo_nosetests/server.py\", line 127, in startServer\n    with mock.patch(\'sys.argv\', [\'%s\'%self.server_class, \'start\', \'--conf_file=%s\' % self.getDataFile(self.server_conf)]):\n  File \"/home/sebastien/devel/janitoo/janitoo_nosetests/src/janitoo_nosetests/__init__.py\", line 299, in getDataFile\n    raise RuntimeError(\"[%s] : Can\'t find data file %s\"%(self.__class__.__name__, path))\nRuntimeError: [TestDbSerser] : Can\'t find data file tests/data/janitoo_db_server.conf\n';</script>
+</td>
+</tr>
+
+<tr id='ft4.6' class='none'>
+    <td class='errorCase'><div class='testcase'>test_051_dbserver_no_auto_migrate</div></td>
+    <td>0.00</td>
+    <td colspan='5' align='center'><a href="javascript:showOutput('ft4.6', 'test_051_dbserver_no_auto_migrate')">error</a>
+<script language="javascript" type="text/javascript">output_list['ft4.6'] = 'Traceback (most recent call last):\n  File \"/usr/lib/python2.7/unittest/case.py\", line 331, in run\n    testMethod()\n  File \"/home/sebastien/devel/janitoo/janitoo_nosetests/src/janitoo_nosetests/dbserver.py\", line 51, in test_051_dbserver_no_auto_migrate\n    options = JNTOptions({\'conf_file\':self.getDataFile(self.server_conf)})\n  File \"/home/sebastien/devel/janitoo/janitoo_nosetests/src/janitoo_nosetests/__init__.py\", line 299, in getDataFile\n    raise RuntimeError(\"[%s] : Can\'t find data file %s\"%(self.__class__.__name__, path))\nRuntimeError: [TestDbSerser] : Can\'t find data file tests/data/janitoo_db_server.conf\n';</script>
+</td>
+</tr>
+
+<tr id='ft4.7' class='none'>
+    <td class='errorCase'><div class='testcase'>test_052_dbserver_auto_migrate</div></td>
+    <td>0.00</td>
+    <td colspan='5' align='center'><a href="javascript:showOutput('ft4.7', 'test_052_dbserver_auto_migrate')">error</a>
+<script language="javascript" type="text/javascript">output_list['ft4.7'] = 'Traceback (most recent call last):\n  File \"/usr/lib/python2.7/unittest/case.py\", line 331, in run\n    testMethod()\n  File \"/home/sebastien/devel/janitoo/janitoo_nosetests/src/janitoo_nosetests/dbserver.py\", line 64, in test_052_dbserver_auto_migrate\n    options = JNTOptions({\'conf_file\':self.getDataFile(self.server_conf)})\n  File \"/home/sebastien/devel/janitoo/janitoo_nosetests/src/janitoo_nosetests/__init__.py\", line 299, in getDataFile\n    raise RuntimeError(\"[%s] : Can\'t find data file %s\"%(self.__class__.__name__, path))\nRuntimeError: [TestDbSerser] : Can\'t find data file tests/data/janitoo_db_server.conf\n';</script>
+</td>
+</tr>
+
+<tr class='errorClass'>
+    <td>tests.test_models:TestModels: Test the models</td>
+    <td>0.00</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td><a href="javascript:showClassDetail('c5',1)">Detail</a></td>
+</tr>
+
+<tr id='ft5.1' class='none'>
+    <td class='errorCase'><div class='testcase'>test_001_user</div></td>
+    <td>0.00</td>
+    <td colspan='5' align='center'><a href="javascript:showOutput('ft5.1', 'test_001_user')">error</a>
+<script language="javascript" type="text/javascript">output_list['ft5.1'] = 'Traceback (most recent call last):\n  File \"/usr/lib/python2.7/unittest/case.py\", line 322, in run\n    self.setUp()\n  File \"/home/sebastien/devel/janitoo/janitoo_nosetests/src/janitoo_nosetests/models.py\", line 60, in setUp\n    options = JNTOptions({\'conf_file\':self.getDataFile(self.models_conf)})\n  File \"/home/sebastien/devel/janitoo/janitoo_nosetests/src/janitoo_nosetests/__init__.py\", line 299, in getDataFile\n    raise RuntimeError(\"[%s] : Can\'t find data file %s\"%(self.__class__.__name__, path))\nRuntimeError: [TestModels] : Can\'t find data file tests/data/janitoo_db.conf\n';</script>
+</td>
+</tr>
+
+<tr id='total_row'>
+    <td>Total</td>
+    <td>19.08</td>
+    <td>14</td>
+    <td>6</td>
+    <td>0</td>
+    <td>8</td>
+    <td>&nbsp;</td>
+</tr>
+</table>
+
+<div id='ending'>&nbsp;</div>
+
+</body>
+</html>

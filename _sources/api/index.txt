@@ -1,0 +1,61 @@
+janitoo_db package
+==================
+
+Subpackages
+-----------
+
+.. toctree::
+
+    janitoo_db.models
+
+Submodules
+----------
+
+janitoo_db.base module
+----------------------
+
+.. automodule:: janitoo_db.base
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+janitoo_db.helpers module
+-------------------------
+
+.. automodule:: janitoo_db.helpers
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+janitoo_db.migrate module
+-------------------------
+
+.. automodule:: janitoo_db.migrate
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+janitoo_db.security module
+--------------------------
+
+.. automodule:: janitoo_db.security
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+janitoo_db.server module
+------------------------
+
+.. automodule:: janitoo_db.server
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: janitoo_db
+    :members:
+    :undoc-members:
+    :show-inheritance:

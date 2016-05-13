@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Create an extension which need a db access &mdash; janitoo_db 0.0.8 documentation</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinxcontrib-images/LightBox2/lightbox2/css/lightbox.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootswatch-3.3.4/united/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.0.8',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/sphinxcontrib-images/LightBox2/lightbox2/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/sphinxcontrib-images/LightBox2/lightbox2/js/lightbox.min.js"></script>
+    <script type="text/javascript" src="_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="top" title="janitoo_db 0.0.8 documentation" href="index.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-inverse navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">
+          janitoo_db</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.0.8</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="tools/index.html">Tools</a></li>
+                <li><a href="api/index.html">Reference</a></li>
+                <li><a href="extensions/index.html">Janitoo extensions</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="simple">
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
+  <div class="section" id="create-an-extension-which-need-a-db-access">
+<h1>Create an extension which need a db access<a class="headerlink" href="#create-an-extension-which-need-a-db-access" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="extends-the-models">
+<h2>Extends the models<a class="headerlink" href="#extends-the-models" title="Permalink to this headline">¶</a></h2>
+<p>Add your models. You can look at janitoo_dhcp to get an example.</p>
+<p>Add an entry_point in setup.py</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>entry_points = {</dt>
+<dd><dl class="first docutils">
+<dt>&#8216;janitoo.models&#8217;: [</dt>
+<dd>&#8216;janitoo_template = janitoo_template.models:extend&#8217;,</dd>
+</dl>
+<p class="last">],</p>
+</dd>
+</dl>
+<p>},</p>
+</div></blockquote>
+<p>It&#8217;s important that the entry_point name match the version-path parameter and the branch label of the alembic command.</p>
+<p>Develop your setup :</p>
+<div class="code bash highlight-python"><div class="highlight"><pre>python setup.py develop
+</pre></div>
+</div>
+</div>
+<div class="section" id="initialise-alembic">
+<h2>Initialise alembic<a class="headerlink" href="#initialise-alembic" title="Permalink to this headline">¶</a></h2>
+<p>Update the database section in the config file:</p>
+<div class="code bash highlight-python"><div class="highlight"><pre>version_locations = %(here)s/models/janitoo_template
+</pre></div>
+</div>
+<p>And the bash helper script:</p>
+<div class="code bash highlight-python"><div class="highlight"><pre>vi alembic.sh
+</pre></div>
+</div>
+<div class="code bash highlight-python"><div class="highlight"><pre>#!/bin/bash
+alembic -c janitoo_template.conf -n database $* --version-path=models/janitoo_template
+</pre></div>
+</div>
+<p>Create a new SQL version management for your project :</p>
+<div class="code bash highlight-python"><div class="highlight"><pre>alembic -c janitoo_template.conf init alembic
+</pre></div>
+</div>
+<p>Create a new labelled branch for your project :</p>
+<p>Update env.py</p>
+</div>
+<div class="section" id="using-jnt-dbman">
+<h2>Using jnt_dbman<a class="headerlink" href="#using-jnt-dbman" title="Permalink to this headline">¶</a></h2>
+<p>jnt_dman allows you to work on an offline database.</p>
+<p>Create a database from migration scripts :</p>
+<div class="code bash highlight-python"><div class="highlight"><pre>jnt_dbman initdb
+</pre></div>
+</div>
+<p>This will create the database using the default url : &#8220;sqlite:////tmp/janitoo_dbman.sqlite&#8221;. You can change it using the &#8211;url parameter.</p>
+<p>Create a database from models :</p>
+<div class="code bash highlight-python"><div class="highlight"><pre>jnt_dbman createdb
+</pre></div>
+</div>
+<p>Drop the database :</p>
+<div class="code bash highlight-python"><div class="highlight"><pre>jnt_dbman dropdb
+</pre></div>
+</div>
+</div>
+<div class="section" id="working-with-branches">
+<h2>Working with branches<a class="headerlink" href="#working-with-branches" title="Permalink to this headline">¶</a></h2>
+<p>Each extension (janitoo included) has its branch :</p>
+<p>Show all extension heads :</p>
+<div class="code bash highlight-python"><div class="highlight"><pre>jnt_dbman heads
+</pre></div>
+</div>
+<p>Check full history of your extension :</p>
+<div class="code bash highlight-python"><div class="highlight"><pre>jnt_dbman history --revrange=janitoo_template:
+</pre></div>
+</div>
+<p>Generate the migration script for your extension :</p>
+<div class="code bash highlight-python"><div class="highlight"><pre>jnt_dbman generate -m &quot;Initial import&quot; --head=janitoo_template
+</pre></div>
+</div>
+<p>Clean the script as it can contains updates for others extension.</p>
+</div>
+<div class="section" id="using-alembic">
+<h2>Using alembic<a class="headerlink" href="#using-alembic" title="Permalink to this headline">¶</a></h2>
+<p>You can also use alembic to manage the models. You need to generate a copy of the version_locations to include in your alembic.ini using :</p>
+<div class="code bash highlight-python"><div class="highlight"><pre>jnt_dbman version_locations
+</pre></div>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2015, Sébastien GALLET aka bibi2100 &lt;bibi21000@gmail.com&gt;.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
