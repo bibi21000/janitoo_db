@@ -145,9 +145,9 @@ function showOutput(id, name) {
 
 <div class='heading'>
 <h1>Unit Test Report</h1>
-<p class='attribute'><strong>Start Time:</strong> 2016-04-01 14:47:13</p>
-<p class='attribute'><strong>Duration:</strong> 0:00:25.670516</p>
-<p class='attribute'><strong>Status:</strong> Pass 6 Error 8</p>
+<p class='attribute'><strong>Start Time:</strong> 2016-05-18 15:57:08</p>
+<p class='attribute'><strong>Duration:</strong> 0:00:32.730240</p>
+<p class='attribute'><strong>Status:</strong> Pass 7 Error 12</p>
 
 <p class='description'></p>
 </div>
@@ -181,7 +181,7 @@ function showOutput(id, name) {
 
 <tr class='passClass'>
     <td>tests.test_migrate:TestMigrate</td>
-    <td>18.05</td>
+    <td>19.09</td>
     <td>4</td>
     <td>4</td>
     <td>0</td>
@@ -191,47 +191,53 @@ function showOutput(id, name) {
 
 <tr id='pt1.1' class='hiddenRow'>
     <td class='none'><div class='testcase'>test_alembic_version</div></td>
-    <td>0.01</td>
+    <td>0.07</td>
     <td colspan='5' align='center'>pass</td>
 </tr>
 
 <tr id='pt1.2' class='hiddenRow'>
     <td class='none'><div class='testcase'>test_compare_type</div></td>
-    <td>7.01</td>
+    <td>7.09</td>
     <td colspan='5' align='center'>pass</td>
 </tr>
 
 <tr id='pt1.3' class='hiddenRow'>
     <td class='none'><div class='testcase'>test_custom_directory</div></td>
-    <td>5.06</td>
+    <td>5.08</td>
     <td colspan='5' align='center'>pass</td>
 </tr>
 
 <tr id='pt1.4' class='hiddenRow'>
     <td class='none'><div class='testcase'>test_migrate_upgrade</div></td>
-    <td>5.05</td>
+    <td>5.04</td>
     <td colspan='5' align='center'>pass</td>
 </tr>
 
 <tr class='passClass'>
-    <td>tests.test_full_models:TestFullModels: Test the DatalogServer server</td>
-    <td>1.02</td>
-    <td>1</td>
-    <td>1</td>
+    <td>tests.test_full_models:TestFullModels: Test the full model</td>
+    <td>7.03</td>
+    <td>2</td>
+    <td>2</td>
     <td>0</td>
     <td>0</td>
-    <td><a href="javascript:showClassDetail('c2',1)">Detail</a></td>
+    <td><a href="javascript:showClassDetail('c2',2)">Detail</a></td>
 </tr>
 
 <tr id='pt2.1' class='hiddenRow'>
-    <td class='none'><div class='testcase'>test_001_engine</div></td>
-    <td>1.02</td>
+    <td class='none'><div class='testcase'>test_001_upgrade</div></td>
+    <td>2.07</td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt2.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_002_downgrade</div></td>
+    <td>4.06</td>
     <td colspan='5' align='center'>pass</td>
 </tr>
 
 <tr class='passClass'>
-    <td>tests.test_package:TestPackage: Test the DatalogServer server</td>
-    <td>0.00</td>
+    <td>tests.test_full_models:TestFullModels2: Test the DatalogServer server</td>
+    <td>1.04</td>
     <td>1</td>
     <td>1</td>
     <td>0</td>
@@ -240,102 +246,134 @@ function showOutput(id, name) {
 </tr>
 
 <tr id='pt3.1' class='hiddenRow'>
-    <td class='none'><div class='testcase'>test_001_check_package</div></td>
-    <td>0.00</td>
+    <td class='none'><div class='testcase'>test_001_engine</div></td>
+    <td>1.04</td>
     <td colspan='5' align='center'>pass</td>
-</tr>
-
-<tr class='errorClass'>
-    <td>tests.test_server:TestDbSerser: Test the server</td>
-    <td>0.00</td>
-    <td>7</td>
-    <td>0</td>
-    <td>0</td>
-    <td>7</td>
-    <td><a href="javascript:showClassDetail('c4',7)">Detail</a></td>
-</tr>
-
-<tr id='ft4.1' class='none'>
-    <td class='errorCase'><div class='testcase'>test_010_start_heartbeat_stop</div></td>
-    <td>0.00</td>
-    <td colspan='5' align='center'><a href="javascript:showOutput('ft4.1', 'test_010_start_heartbeat_stop')">error</a>
-<script language="javascript" type="text/javascript">output_list['ft4.1'] = 'Traceback (most recent call last):\n  File \"/usr/lib/python2.7/unittest/case.py\", line 331, in run\n    testMethod()\n  File \"/home/sebastien/devel/janitoo/janitoo_nosetests/src/janitoo_nosetests/server.py\", line 392, in test_010_start_heartbeat_stop\n    self.start()\n  File \"/home/sebastien/devel/janitoo/janitoo_nosetests/src/janitoo_nosetests/server.py\", line 147, in start\n    self.startServer()\n  File \"/home/sebastien/devel/janitoo/janitoo_nosetests/src/janitoo_nosetests/server.py\", line 127, in startServer\n    with mock.patch(\'sys.argv\', [\'%s\'%self.server_class, \'start\', \'--conf_file=%s\' % self.getDataFile(self.server_conf)]):\n  File \"/home/sebastien/devel/janitoo/janitoo_nosetests/src/janitoo_nosetests/__init__.py\", line 299, in getDataFile\n    raise RuntimeError(\"[%s] : Can\'t find data file %s\"%(self.__class__.__name__, path))\nRuntimeError: [TestDbSerser] : Can\'t find data file tests/data/janitoo_db_server.conf\n';</script>
-</td>
-</tr>
-
-<tr id='ft4.2' class='none'>
-    <td class='errorCase'><div class='testcase'>test_011_start_reload_stop</div></td>
-    <td>0.00</td>
-    <td colspan='5' align='center'><a href="javascript:showOutput('ft4.2', 'test_011_start_reload_stop')">error</a>
-<script language="javascript" type="text/javascript">output_list['ft4.2'] = 'Traceback (most recent call last):\n  File \"/usr/lib/python2.7/unittest/case.py\", line 331, in run\n    testMethod()\n  File \"/home/sebastien/devel/janitoo/janitoo_nosetests/src/janitoo_nosetests/server.py\", line 400, in test_011_start_reload_stop\n    self.start()\n  File \"/home/sebastien/devel/janitoo/janitoo_nosetests/src/janitoo_nosetests/server.py\", line 147, in start\n    self.startServer()\n  File \"/home/sebastien/devel/janitoo/janitoo_nosetests/src/janitoo_nosetests/server.py\", line 127, in startServer\n    with mock.patch(\'sys.argv\', [\'%s\'%self.server_class, \'start\', \'--conf_file=%s\' % self.getDataFile(self.server_conf)]):\n  File \"/home/sebastien/devel/janitoo/janitoo_nosetests/src/janitoo_nosetests/__init__.py\", line 299, in getDataFile\n    raise RuntimeError(\"[%s] : Can\'t find data file %s\"%(self.__class__.__name__, path))\nRuntimeError: [TestDbSerser] : Can\'t find data file tests/data/janitoo_db_server.conf\n';</script>
-</td>
-</tr>
-
-<tr id='ft4.3' class='none'>
-    <td class='errorCase'><div class='testcase'>test_012_start_reload_threads_stop</div></td>
-    <td>0.00</td>
-    <td colspan='5' align='center'><a href="javascript:showOutput('ft4.3', 'test_012_start_reload_threads_stop')">error</a>
-<script language="javascript" type="text/javascript">output_list['ft4.3'] = 'Traceback (most recent call last):\n  File \"/usr/lib/python2.7/unittest/case.py\", line 331, in run\n    testMethod()\n  File \"/home/sebastien/devel/janitoo/janitoo_nosetests/src/janitoo_nosetests/server.py\", line 412, in test_012_start_reload_threads_stop\n    self.start()\n  File \"/home/sebastien/devel/janitoo/janitoo_nosetests/src/janitoo_nosetests/server.py\", line 147, in start\n    self.startServer()\n  File \"/home/sebastien/devel/janitoo/janitoo_nosetests/src/janitoo_nosetests/server.py\", line 127, in startServer\n    with mock.patch(\'sys.argv\', [\'%s\'%self.server_class, \'start\', \'--conf_file=%s\' % self.getDataFile(self.server_conf)]):\n  File \"/home/sebastien/devel/janitoo/janitoo_nosetests/src/janitoo_nosetests/__init__.py\", line 299, in getDataFile\n    raise RuntimeError(\"[%s] : Can\'t find data file %s\"%(self.__class__.__name__, path))\nRuntimeError: [TestDbSerser] : Can\'t find data file tests/data/janitoo_db_server.conf\n';</script>
-</td>
-</tr>
-
-<tr id='ft4.4' class='none'>
-    <td class='errorCase'><div class='testcase'>test_020_request_broadcast</div></td>
-    <td>0.00</td>
-    <td colspan='5' align='center'><a href="javascript:showOutput('ft4.4', 'test_020_request_broadcast')">error</a>
-<script language="javascript" type="text/javascript">output_list['ft4.4'] = 'Traceback (most recent call last):\n  File \"/usr/lib/python2.7/unittest/case.py\", line 331, in run\n    testMethod()\n  File \"/home/sebastien/devel/janitoo/janitoo_nosetests/src/janitoo_nosetests/server.py\", line 426, in test_020_request_broadcast\n    self.start()\n  File \"/home/sebastien/devel/janitoo/janitoo_nosetests/src/janitoo_nosetests/server.py\", line 147, in start\n    self.startServer()\n  File \"/home/sebastien/devel/janitoo/janitoo_nosetests/src/janitoo_nosetests/server.py\", line 127, in startServer\n    with mock.patch(\'sys.argv\', [\'%s\'%self.server_class, \'start\', \'--conf_file=%s\' % self.getDataFile(self.server_conf)]):\n  File \"/home/sebastien/devel/janitoo/janitoo_nosetests/src/janitoo_nosetests/__init__.py\", line 299, in getDataFile\n    raise RuntimeError(\"[%s] : Can\'t find data file %s\"%(self.__class__.__name__, path))\nRuntimeError: [TestDbSerser] : Can\'t find data file tests/data/janitoo_db_server.conf\n';</script>
-</td>
-</tr>
-
-<tr id='ft4.5' class='none'>
-    <td class='errorCase'><div class='testcase'>test_030_wait_for_all_nodes</div></td>
-    <td>0.00</td>
-    <td colspan='5' align='center'><a href="javascript:showOutput('ft4.5', 'test_030_wait_for_all_nodes')">error</a>
-<script language="javascript" type="text/javascript">output_list['ft4.5'] = 'Traceback (most recent call last):\n  File \"/usr/lib/python2.7/unittest/case.py\", line 331, in run\n    testMethod()\n  File \"/home/sebastien/devel/janitoo/janitoo_nosetests/src/janitoo_nosetests/server.py\", line 446, in test_030_wait_for_all_nodes\n    self.start()\n  File \"/home/sebastien/devel/janitoo/janitoo_nosetests/src/janitoo_nosetests/server.py\", line 147, in start\n    self.startServer()\n  File \"/home/sebastien/devel/janitoo/janitoo_nosetests/src/janitoo_nosetests/server.py\", line 127, in startServer\n    with mock.patch(\'sys.argv\', [\'%s\'%self.server_class, \'start\', \'--conf_file=%s\' % self.getDataFile(self.server_conf)]):\n  File \"/home/sebastien/devel/janitoo/janitoo_nosetests/src/janitoo_nosetests/__init__.py\", line 299, in getDataFile\n    raise RuntimeError(\"[%s] : Can\'t find data file %s\"%(self.__class__.__name__, path))\nRuntimeError: [TestDbSerser] : Can\'t find data file tests/data/janitoo_db_server.conf\n';</script>
-</td>
-</tr>
-
-<tr id='ft4.6' class='none'>
-    <td class='errorCase'><div class='testcase'>test_051_dbserver_no_auto_migrate</div></td>
-    <td>0.00</td>
-    <td colspan='5' align='center'><a href="javascript:showOutput('ft4.6', 'test_051_dbserver_no_auto_migrate')">error</a>
-<script language="javascript" type="text/javascript">output_list['ft4.6'] = 'Traceback (most recent call last):\n  File \"/usr/lib/python2.7/unittest/case.py\", line 331, in run\n    testMethod()\n  File \"/home/sebastien/devel/janitoo/janitoo_nosetests/src/janitoo_nosetests/dbserver.py\", line 51, in test_051_dbserver_no_auto_migrate\n    options = JNTOptions({\'conf_file\':self.getDataFile(self.server_conf)})\n  File \"/home/sebastien/devel/janitoo/janitoo_nosetests/src/janitoo_nosetests/__init__.py\", line 299, in getDataFile\n    raise RuntimeError(\"[%s] : Can\'t find data file %s\"%(self.__class__.__name__, path))\nRuntimeError: [TestDbSerser] : Can\'t find data file tests/data/janitoo_db_server.conf\n';</script>
-</td>
-</tr>
-
-<tr id='ft4.7' class='none'>
-    <td class='errorCase'><div class='testcase'>test_052_dbserver_auto_migrate</div></td>
-    <td>0.00</td>
-    <td colspan='5' align='center'><a href="javascript:showOutput('ft4.7', 'test_052_dbserver_auto_migrate')">error</a>
-<script language="javascript" type="text/javascript">output_list['ft4.7'] = 'Traceback (most recent call last):\n  File \"/usr/lib/python2.7/unittest/case.py\", line 331, in run\n    testMethod()\n  File \"/home/sebastien/devel/janitoo/janitoo_nosetests/src/janitoo_nosetests/dbserver.py\", line 64, in test_052_dbserver_auto_migrate\n    options = JNTOptions({\'conf_file\':self.getDataFile(self.server_conf)})\n  File \"/home/sebastien/devel/janitoo/janitoo_nosetests/src/janitoo_nosetests/__init__.py\", line 299, in getDataFile\n    raise RuntimeError(\"[%s] : Can\'t find data file %s\"%(self.__class__.__name__, path))\nRuntimeError: [TestDbSerser] : Can\'t find data file tests/data/janitoo_db_server.conf\n';</script>
-</td>
 </tr>
 
 <tr class='errorClass'>
     <td>tests.test_models:TestModels: Test the models</td>
     <td>0.00</td>
-    <td>1</td>
+    <td>4</td>
     <td>0</td>
     <td>0</td>
-    <td>1</td>
-    <td><a href="javascript:showClassDetail('c5',1)">Detail</a></td>
+    <td>4</td>
+    <td><a href="javascript:showClassDetail('c4',4)">Detail</a></td>
+</tr>
+
+<tr id='ft4.1' class='none'>
+    <td class='errorCase'><div class='testcase'>test_001_user</div></td>
+    <td>0.00</td>
+    <td colspan='5' align='center'><a href="javascript:showOutput('ft4.1', 'test_001_user')">error</a>
+<script language="javascript" type="text/javascript">output_list['ft4.1'] = 'Traceback (most recent call last):\n  File \"/usr/lib/python2.7/unittest/case.py\", line 322, in run\n    self.setUp()\n  File \"/home/sebastien/devel/janitoo/janitoo_nosetests/src/janitoo_nosetests/models.py\", line 67, in setUp\n    options = JNTOptions({\'conf_file\':self.getDataFile(self.models_conf)})\n  File \"/home/sebastien/devel/janitoo/janitoo_nosetests/src/janitoo_nosetests/__init__.py\", line 350, in getDataFile\n    raise RuntimeError(\"[%s] : Can\'t find data file %s\"%(self.__class__.__name__, path))\nRuntimeError: [TestModels] : Can\'t find data file tests/data/janitoo_db.conf\n';</script>
+</td>
+</tr>
+
+<tr id='ft4.2' class='none'>
+    <td class='errorCase'><div class='testcase'>test_001_versiondb</div></td>
+    <td>0.00</td>
+    <td colspan='5' align='center'><a href="javascript:showOutput('ft4.2', 'test_001_versiondb')">error</a>
+<script language="javascript" type="text/javascript">output_list['ft4.2'] = 'Traceback (most recent call last):\n  File \"/usr/lib/python2.7/unittest/case.py\", line 322, in run\n    self.setUp()\n  File \"/home/sebastien/devel/janitoo/janitoo_nosetests/src/janitoo_nosetests/models.py\", line 67, in setUp\n    options = JNTOptions({\'conf_file\':self.getDataFile(self.models_conf)})\n  File \"/home/sebastien/devel/janitoo/janitoo_nosetests/src/janitoo_nosetests/__init__.py\", line 350, in getDataFile\n    raise RuntimeError(\"[%s] : Can\'t find data file %s\"%(self.__class__.__name__, path))\nRuntimeError: [TestModels] : Can\'t find data file tests/data/janitoo_db.conf\n';</script>
+</td>
+</tr>
+
+<tr id='ft4.3' class='none'>
+    <td class='errorCase'><div class='testcase'>test_002_heads</div></td>
+    <td>0.00</td>
+    <td colspan='5' align='center'><a href="javascript:showOutput('ft4.3', 'test_002_heads')">error</a>
+<script language="javascript" type="text/javascript">output_list['ft4.3'] = 'Traceback (most recent call last):\n  File \"/usr/lib/python2.7/unittest/case.py\", line 322, in run\n    self.setUp()\n  File \"/home/sebastien/devel/janitoo/janitoo_nosetests/src/janitoo_nosetests/models.py\", line 67, in setUp\n    options = JNTOptions({\'conf_file\':self.getDataFile(self.models_conf)})\n  File \"/home/sebastien/devel/janitoo/janitoo_nosetests/src/janitoo_nosetests/__init__.py\", line 350, in getDataFile\n    raise RuntimeError(\"[%s] : Can\'t find data file %s\"%(self.__class__.__name__, path))\nRuntimeError: [TestModels] : Can\'t find data file tests/data/janitoo_db.conf\n';</script>
+</td>
+</tr>
+
+<tr id='ft4.4' class='none'>
+    <td class='errorCase'><div class='testcase'>test_003_checkdb</div></td>
+    <td>0.00</td>
+    <td colspan='5' align='center'><a href="javascript:showOutput('ft4.4', 'test_003_checkdb')">error</a>
+<script language="javascript" type="text/javascript">output_list['ft4.4'] = 'Traceback (most recent call last):\n  File \"/usr/lib/python2.7/unittest/case.py\", line 322, in run\n    self.setUp()\n  File \"/home/sebastien/devel/janitoo/janitoo_nosetests/src/janitoo_nosetests/models.py\", line 67, in setUp\n    options = JNTOptions({\'conf_file\':self.getDataFile(self.models_conf)})\n  File \"/home/sebastien/devel/janitoo/janitoo_nosetests/src/janitoo_nosetests/__init__.py\", line 350, in getDataFile\n    raise RuntimeError(\"[%s] : Can\'t find data file %s\"%(self.__class__.__name__, path))\nRuntimeError: [TestModels] : Can\'t find data file tests/data/janitoo_db.conf\n';</script>
+</td>
+</tr>
+
+<tr class='errorClass'>
+    <td>tests.test_server:TestDbSerser: Test the server</td>
+    <td>0.00</td>
+    <td>8</td>
+    <td>0</td>
+    <td>0</td>
+    <td>8</td>
+    <td><a href="javascript:showClassDetail('c5',8)">Detail</a></td>
 </tr>
 
 <tr id='ft5.1' class='none'>
-    <td class='errorCase'><div class='testcase'>test_001_user</div></td>
+    <td class='errorCase'><div class='testcase'>test_010_start_heartbeat_stop</div></td>
     <td>0.00</td>
-    <td colspan='5' align='center'><a href="javascript:showOutput('ft5.1', 'test_001_user')">error</a>
-<script language="javascript" type="text/javascript">output_list['ft5.1'] = 'Traceback (most recent call last):\n  File \"/usr/lib/python2.7/unittest/case.py\", line 322, in run\n    self.setUp()\n  File \"/home/sebastien/devel/janitoo/janitoo_nosetests/src/janitoo_nosetests/models.py\", line 60, in setUp\n    options = JNTOptions({\'conf_file\':self.getDataFile(self.models_conf)})\n  File \"/home/sebastien/devel/janitoo/janitoo_nosetests/src/janitoo_nosetests/__init__.py\", line 299, in getDataFile\n    raise RuntimeError(\"[%s] : Can\'t find data file %s\"%(self.__class__.__name__, path))\nRuntimeError: [TestModels] : Can\'t find data file tests/data/janitoo_db.conf\n';</script>
+    <td colspan='5' align='center'><a href="javascript:showOutput('ft5.1', 'test_010_start_heartbeat_stop')">error</a>
+<script language="javascript" type="text/javascript">output_list['ft5.1'] = 'Traceback (most recent call last):\n  File \"/usr/lib/python2.7/unittest/case.py\", line 322, in run\n    self.setUp()\n  File \"/home/sebastien/devel/janitoo/janitoo_nosetests/src/janitoo_nosetests/dbserver.py\", line 47, in setUp\n    options = JNTOptions({\'conf_file\':self.getDataFile(self.server_conf)})\n  File \"/home/sebastien/devel/janitoo/janitoo_nosetests/src/janitoo_nosetests/__init__.py\", line 350, in getDataFile\n    raise RuntimeError(\"[%s] : Can\'t find data file %s\"%(self.__class__.__name__, path))\nRuntimeError: [TestDbSerser] : Can\'t find data file tests/data/janitoo_db_server.conf\n';</script>
+</td>
+</tr>
+
+<tr id='ft5.2' class='none'>
+    <td class='errorCase'><div class='testcase'>test_011_start_reload_stop</div></td>
+    <td>0.00</td>
+    <td colspan='5' align='center'><a href="javascript:showOutput('ft5.2', 'test_011_start_reload_stop')">error</a>
+<script language="javascript" type="text/javascript">output_list['ft5.2'] = 'Traceback (most recent call last):\n  File \"/usr/lib/python2.7/unittest/case.py\", line 322, in run\n    self.setUp()\n  File \"/home/sebastien/devel/janitoo/janitoo_nosetests/src/janitoo_nosetests/dbserver.py\", line 47, in setUp\n    options = JNTOptions({\'conf_file\':self.getDataFile(self.server_conf)})\n  File \"/home/sebastien/devel/janitoo/janitoo_nosetests/src/janitoo_nosetests/__init__.py\", line 350, in getDataFile\n    raise RuntimeError(\"[%s] : Can\'t find data file %s\"%(self.__class__.__name__, path))\nRuntimeError: [TestDbSerser] : Can\'t find data file tests/data/janitoo_db_server.conf\n';</script>
+</td>
+</tr>
+
+<tr id='ft5.3' class='none'>
+    <td class='errorCase'><div class='testcase'>test_012_start_reload_threads_stop</div></td>
+    <td>0.00</td>
+    <td colspan='5' align='center'><a href="javascript:showOutput('ft5.3', 'test_012_start_reload_threads_stop')">error</a>
+<script language="javascript" type="text/javascript">output_list['ft5.3'] = 'Traceback (most recent call last):\n  File \"/usr/lib/python2.7/unittest/case.py\", line 322, in run\n    self.setUp()\n  File \"/home/sebastien/devel/janitoo/janitoo_nosetests/src/janitoo_nosetests/dbserver.py\", line 47, in setUp\n    options = JNTOptions({\'conf_file\':self.getDataFile(self.server_conf)})\n  File \"/home/sebastien/devel/janitoo/janitoo_nosetests/src/janitoo_nosetests/__init__.py\", line 350, in getDataFile\n    raise RuntimeError(\"[%s] : Can\'t find data file %s\"%(self.__class__.__name__, path))\nRuntimeError: [TestDbSerser] : Can\'t find data file tests/data/janitoo_db_server.conf\n';</script>
+</td>
+</tr>
+
+<tr id='ft5.4' class='none'>
+    <td class='errorCase'><div class='testcase'>test_020_request_broadcast</div></td>
+    <td>0.00</td>
+    <td colspan='5' align='center'><a href="javascript:showOutput('ft5.4', 'test_020_request_broadcast')">error</a>
+<script language="javascript" type="text/javascript">output_list['ft5.4'] = 'Traceback (most recent call last):\n  File \"/usr/lib/python2.7/unittest/case.py\", line 322, in run\n    self.setUp()\n  File \"/home/sebastien/devel/janitoo/janitoo_nosetests/src/janitoo_nosetests/dbserver.py\", line 47, in setUp\n    options = JNTOptions({\'conf_file\':self.getDataFile(self.server_conf)})\n  File \"/home/sebastien/devel/janitoo/janitoo_nosetests/src/janitoo_nosetests/__init__.py\", line 350, in getDataFile\n    raise RuntimeError(\"[%s] : Can\'t find data file %s\"%(self.__class__.__name__, path))\nRuntimeError: [TestDbSerser] : Can\'t find data file tests/data/janitoo_db_server.conf\n';</script>
+</td>
+</tr>
+
+<tr id='ft5.5' class='none'>
+    <td class='errorCase'><div class='testcase'>test_030_wait_for_all_nodes</div></td>
+    <td>0.00</td>
+    <td colspan='5' align='center'><a href="javascript:showOutput('ft5.5', 'test_030_wait_for_all_nodes')">error</a>
+<script language="javascript" type="text/javascript">output_list['ft5.5'] = 'Traceback (most recent call last):\n  File \"/usr/lib/python2.7/unittest/case.py\", line 322, in run\n    self.setUp()\n  File \"/home/sebastien/devel/janitoo/janitoo_nosetests/src/janitoo_nosetests/dbserver.py\", line 47, in setUp\n    options = JNTOptions({\'conf_file\':self.getDataFile(self.server_conf)})\n  File \"/home/sebastien/devel/janitoo/janitoo_nosetests/src/janitoo_nosetests/__init__.py\", line 350, in getDataFile\n    raise RuntimeError(\"[%s] : Can\'t find data file %s\"%(self.__class__.__name__, path))\nRuntimeError: [TestDbSerser] : Can\'t find data file tests/data/janitoo_db_server.conf\n';</script>
+</td>
+</tr>
+
+<tr id='ft5.6' class='none'>
+    <td class='errorCase'><div class='testcase'>test_040_server_start_no_error_in_log</div></td>
+    <td>0.00</td>
+    <td colspan='5' align='center'><a href="javascript:showOutput('ft5.6', 'test_040_server_start_no_error_in_log')">error</a>
+<script language="javascript" type="text/javascript">output_list['ft5.6'] = 'Traceback (most recent call last):\n  File \"/usr/lib/python2.7/unittest/case.py\", line 322, in run\n    self.setUp()\n  File \"/home/sebastien/devel/janitoo/janitoo_nosetests/src/janitoo_nosetests/dbserver.py\", line 47, in setUp\n    options = JNTOptions({\'conf_file\':self.getDataFile(self.server_conf)})\n  File \"/home/sebastien/devel/janitoo/janitoo_nosetests/src/janitoo_nosetests/__init__.py\", line 350, in getDataFile\n    raise RuntimeError(\"[%s] : Can\'t find data file %s\"%(self.__class__.__name__, path))\nRuntimeError: [TestDbSerser] : Can\'t find data file tests/data/janitoo_db_server.conf\n';</script>
+</td>
+</tr>
+
+<tr id='ft5.7' class='none'>
+    <td class='errorCase'><div class='testcase'>test_051_dbserver_no_auto_migrate</div></td>
+    <td>0.00</td>
+    <td colspan='5' align='center'><a href="javascript:showOutput('ft5.7', 'test_051_dbserver_no_auto_migrate')">error</a>
+<script language="javascript" type="text/javascript">output_list['ft5.7'] = 'Traceback (most recent call last):\n  File \"/usr/lib/python2.7/unittest/case.py\", line 322, in run\n    self.setUp()\n  File \"/home/sebastien/devel/janitoo/janitoo_nosetests/src/janitoo_nosetests/dbserver.py\", line 47, in setUp\n    options = JNTOptions({\'conf_file\':self.getDataFile(self.server_conf)})\n  File \"/home/sebastien/devel/janitoo/janitoo_nosetests/src/janitoo_nosetests/__init__.py\", line 350, in getDataFile\n    raise RuntimeError(\"[%s] : Can\'t find data file %s\"%(self.__class__.__name__, path))\nRuntimeError: [TestDbSerser] : Can\'t find data file tests/data/janitoo_db_server.conf\n';</script>
+</td>
+</tr>
+
+<tr id='ft5.8' class='none'>
+    <td class='errorCase'><div class='testcase'>test_052_dbserver_auto_migrate</div></td>
+    <td>0.00</td>
+    <td colspan='5' align='center'><a href="javascript:showOutput('ft5.8', 'test_052_dbserver_auto_migrate')">error</a>
+<script language="javascript" type="text/javascript">output_list['ft5.8'] = 'Traceback (most recent call last):\n  File \"/usr/lib/python2.7/unittest/case.py\", line 322, in run\n    self.setUp()\n  File \"/home/sebastien/devel/janitoo/janitoo_nosetests/src/janitoo_nosetests/dbserver.py\", line 47, in setUp\n    options = JNTOptions({\'conf_file\':self.getDataFile(self.server_conf)})\n  File \"/home/sebastien/devel/janitoo/janitoo_nosetests/src/janitoo_nosetests/__init__.py\", line 350, in getDataFile\n    raise RuntimeError(\"[%s] : Can\'t find data file %s\"%(self.__class__.__name__, path))\nRuntimeError: [TestDbSerser] : Can\'t find data file tests/data/janitoo_db_server.conf\n';</script>
 </td>
 </tr>
 
 <tr id='total_row'>
     <td>Total</td>
-    <td>19.08</td>
-    <td>14</td>
-    <td>6</td>
+    <td>28.08</td>
+    <td>19</td>
+    <td>7</td>
     <td>0</td>
-    <td>8</td>
+    <td>12</td>
     <td>&nbsp;</td>
 </tr>
 </table>

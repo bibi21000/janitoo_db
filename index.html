@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Welcome to documentation! &mdash; janitoo_db 0.0.8 documentation</title>
+    <title>Welcome to janitoo’s documentation! &mdash; janitoo_db 0.0.8 documentation</title>
     
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -33,6 +33,7 @@
     <script type="text/javascript" src="_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="top" title="janitoo_db 0.0.8 documentation" href="#" />
+    <link rel="next" title="Create an extension which need a db access" href="alembic.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -71,7 +72,19 @@
      href="#">Site <b class="caret"></b></a>
   <ul class="dropdown-menu globaltoc"
       role="menu"
-      aria-labelledby="dLabelGlobalToc"><ul class="simple">
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="alembic.html">alembic</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="alembic.html#extends-the-models">Extends the models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alembic.html#initialise-alembic">Initialise alembic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alembic.html#using-jnt-dbman">Using jnt_dbman</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alembic.html#working-with-branches">Working with branches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alembic.html#using-alembic">Using alembic</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cli.html">Command-line interface</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cli.html#jnt-dbman">jnt_dbman</a></li>
+</ul>
+</li>
 </ul>
 </ul>
 </li>
@@ -80,6 +93,10 @@
             
               
                 
+  <li>
+    <a href="alembic.html" title="Next Chapter: Create an extension which need a db access"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Create an extens... &raquo;</span>
+    </a>
+  </li>
               
             
             
@@ -105,11 +122,40 @@
   <div class="row">
     <div class="col-md-12 content">
       
-  <div class="section" id="welcome-to-documentation">
-<h1>Welcome to documentation!<a class="headerlink" href="#welcome-to-documentation" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="welcome-to-janitoo-s-documentation">
+<h1>Welcome to janitoo&#8217;s documentation!<a class="headerlink" href="#welcome-to-janitoo-s-documentation" title="Permalink to this headline">¶</a></h1>
 <p>Contents:</p>
 <div class="toctree-wrapper compound">
-<ul class="simple">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="alembic.html">alembic</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="alembic.html#extends-the-models">Extends the models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alembic.html#initialise-alembic">Initialise alembic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alembic.html#using-jnt-dbman">Using jnt_dbman</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alembic.html#working-with-branches">Working with branches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alembic.html#using-alembic">Using alembic</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cli.html">Command-line interface</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cli.html#jnt-dbman">jnt_dbman</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="cli.html#jnt-dbman-branches">jnt_dbman branches</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cli.html#jnt-dbman-checkdb">jnt_dbman checkdb</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cli.html#jnt-dbman-collect">jnt_dbman collect</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cli.html#jnt-dbman-createdb">jnt_dbman createdb</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cli.html#jnt-dbman-current">jnt_dbman current</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cli.html#jnt-dbman-downgrade">jnt_dbman downgrade</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cli.html#jnt-dbman-dropdb">jnt_dbman dropdb</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cli.html#jnt-dbman-generate">jnt_dbman generate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cli.html#jnt-dbman-heads">jnt_dbman heads</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cli.html#jnt-dbman-history">jnt_dbman history</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cli.html#jnt-dbman-initdb">jnt_dbman initdb</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cli.html#jnt-dbman-show">jnt_dbman show</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cli.html#jnt-dbman-upgrade">jnt_dbman upgrade</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cli.html#jnt-dbman-version-locations">jnt_dbman version_locations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cli.html#jnt-dbman-versiondb">jnt_dbman versiondb</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -117,8 +163,6 @@
 <h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li><a class="reference internal" href="genindex.html"><em>Index</em></a></li>
-<li><a class="reference internal" href="py-modindex.html"><em>Module Index</em></a></li>
-<li><a class="reference internal" href="search.html"><em>Search Page</em></a></li>
 </ul>
 </div>
 
