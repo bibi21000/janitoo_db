@@ -8,6 +8,8 @@ Add your models. You can look at janitoo_dhcp to get an example.
 
 Add an entry_point in setup.py
 
+.. code:: python
+
     entry_points = {
         'janitoo.models': [
             'janitoo_template = janitoo_template.models:extend',
