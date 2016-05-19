@@ -133,18 +133,13 @@
 <h2>Extends the models<a class="headerlink" href="#extends-the-models" title="Permalink to this headline">¶</a></h2>
 <p>Add your models. You can look at janitoo_dhcp to get an example.</p>
 <p>Add an entry_point in setup.py</p>
-<blockquote>
-<div><dl class="docutils">
-<dt>entry_points = {</dt>
-<dd><dl class="first docutils">
-<dt>&#8216;janitoo.models&#8217;: [</dt>
-<dd>&#8216;janitoo_template = janitoo_template.models:extend&#8217;,</dd>
-</dl>
-<p class="last">],</p>
-</dd>
-</dl>
-<p>},</p>
-</div></blockquote>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">entry_points</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">&#39;janitoo.models&#39;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s">&#39;janitoo_template = janitoo_template.models:extend&#39;</span><span class="p">,</span>
+    <span class="p">],</span>
+<span class="p">},</span>
+</pre></div>
+</div>
 <p>It&#8217;s important that the entry_point name match the version-path parameter and the branch label of the alembic command.</p>
 <p>Develop your setup :</p>
 <div class="code bash highlight-python"><div class="highlight"><pre>python setup.py develop
@@ -227,7 +222,7 @@ alembic -c janitoo_template.conf -n database $* --version-path=models/janitoo_te
       
     </p>
     <p>
-        &copy; Copyright 2015,2016 Sébastien GALLET aka bibi2100 &lt;bibi21000@gmail.com&gt;.<br/>
+        &copy; Copyright 2014,2015,2016 Sébastien GALLET aka bibi2100 &lt;bibi21000@gmail.com&gt;.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.<br/>
     </p>
   </div>
