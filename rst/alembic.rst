@@ -57,11 +57,13 @@ Create a new SQL version management for your project :
 Create a new labelled branch for your project :
 
 .. code:: bash
+
     alembic -c janitoo_template.conf -n database  revision -m "Create janitoo_template branch" --head=base --branch-label=janitoo_template --version-path=models/janitoo_template
 
 Update env.py
 
 .. code:: bash
+
     #~ target_metadata = None
     from janitoo_db.base import Base
     target_metadata = Base.metadata
