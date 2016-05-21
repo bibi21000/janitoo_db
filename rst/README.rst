@@ -10,6 +10,14 @@
     :target: https://coveralls.io/github/bibi21000/janitoo_db?branch=master
     :alt: Coveralls results
 
+.. image:: https://landscape.io/github/bibi21000/janitoo_db/master/landscape.svg?style=flat
+   :target: https://landscape.io/github/bibi21000/janitoo_db/master
+   :alt: Code Health
+
+.. image:: https://img.shields.io/badge/Documenation-ok-brightgreen.svg?style=flat
+   :target: https://bibi21000.github.io/janitoo_db/index.html
+   :alt: Documentation
+
 ===============
 The README file
 ===============
