@@ -165,7 +165,15 @@ alembic -c janitoo_template.conf -n database $* --version-path=models/janitoo_te
 </pre></div>
 </div>
 <p>Create a new labelled branch for your project :</p>
+<div class="code bash highlight-python"><div class="highlight"><pre>alembic -c janitoo_template.conf -n database  revision -m &quot;Create janitoo_template branch&quot; --head=base --branch-label=janitoo_template --version-path=models/janitoo_template
+</pre></div>
+</div>
 <p>Update env.py</p>
+<div class="code bash highlight-python"><div class="highlight"><pre><span class="c">#~ target_metadata = None</span>
+<span class="kn">from</span> <span class="nn">janitoo_db.base</span> <span class="kn">import</span> <span class="n">Base</span>
+<span class="n">target_metadata</span> <span class="o">=</span> <span class="n">Base</span><span class="o">.</span><span class="n">metadata</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="using-jnt-dbman">
 <h2>Using jnt_dbman<a class="headerlink" href="#using-jnt-dbman" title="Permalink to this headline">¶</a></h2>
