@@ -112,7 +112,7 @@ class Config(alConfig):
         """
         try:
             os.unlink(self.config_file_name)
-        except:
+        except Exception:
             pass
 
     def initdb(self):
