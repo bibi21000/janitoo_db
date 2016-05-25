@@ -8,6 +8,7 @@ Contents:
 
     alembic <alembic>
     Command-line interface <cli>
+    Using documentation <using_doc>
 
 
 Indices and tables
