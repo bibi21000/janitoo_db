@@ -95,7 +95,7 @@ setup(
     package_dir = { '': 'src' },
     install_requires=[
                      'janitoo',
-                     'pysqlite >= 2.6.3',
+                     #~ 'pysqlite >= 2.6.3',
                      'SQLAlchemy >= 1.0.6',
                      'SQLAlchemy-Utils',
                      'alembic >= 0.7.7',

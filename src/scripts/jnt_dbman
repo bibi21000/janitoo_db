@@ -32,8 +32,6 @@ import logging
 import shutil
 
 import pkg_resources
-#We must NOT subsitute % in value for alembic (database section)
-from ConfigParser import RawConfigParser as ConfigParser
 import argparse
 
 from sqlalchemy import create_engine
@@ -123,20 +121,20 @@ def main():
         engine = create_engine(url=jntconfig.url)
         Base.metadata.create_all(bind=engine)
     elif args.command == "versiondb":
-        print jntconfig.versiondb()
+        print(jntconfig.versiondb())
     elif args.command == "checkdb":
-        print jntconfig.checkdb()
+        print(jntconfig.checkdb())
     elif args.command == "dropdb":
         engine = create_engine(url=jntconfig.url)
         Base.metadata.drop_all(bind=engine)
     elif args.command == "collect":
         for entrypoint in pkg_resources.iter_entry_points(group='janitoo.models'):
-            print("Found extension %s provided by module %s"%(entrypoint.name, entrypoint.module_name))
+            print(("Found extension %s provided by module %s"%(entrypoint.name, entrypoint.module_name)))
     elif args.command == "version_locations":
         config = jntconfig
-        print "version_locations = %s" % config.get_main_option("version_locations")
+        print("version_locations = %s" % config.get_main_option("version_locations"))
     elif args.command == "heads":
-        print jntconfig.heads(verbose=True)
+        print(jntconfig.heads(verbose=True))
     elif args.command == "branches":
         alcommand.branches(jntconfig, verbose=True)
     elif args.command == "upgrade":

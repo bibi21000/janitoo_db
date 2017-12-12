@@ -55,7 +55,7 @@ def saobject_to_dict(obj, found=None):
     columns = [column.key for column in mapper.columns]
     get_key_value = lambda c: (c, getattr(obj, c).isoformat()) if isinstance(getattr(obj, c), datetime) else (c, getattr(obj, c))
     out = dict(map(get_key_value, columns))
-    for name, relation in mapper.relationships.items():
+    for name, relation in list(mapper.relationships.items()):
         if relation not in found:
             found.add(relation)
             related_obj = getattr(obj, name)

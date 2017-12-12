@@ -31,7 +31,7 @@ logger = logging.getLogger(__name__)
 import sqlalchemy
 from sqlalchemy.ext.declarative import declarative_base
 
-from janitoo._compat import string_types
+from janitoo.compat import string_types
 
 Base = declarative_base()
 

@@ -38,12 +38,14 @@ from struct import Struct
 from random import SystemRandom
 from operator import xor
 from itertools import starmap
-from janitoo._compat import to_native, to_bytes
-from six.moves import range as range_type, zip as izip
-from six import PY2, text_type, string_types
+
+from janitoo.compat import range_type, izip
+from janitoo.compat import PY2, text_type, string_types
 
 SALT_CHARS = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
 DEFAULT_PBKDF2_ITERATIONS = 1000
+
+from janitoo.compat import to_native, to_bytes
 
 _pack_int = Struct('>I').pack
 _builtin_safe_str_cmp = getattr(hmac, 'compare_digest', None)
