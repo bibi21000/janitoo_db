@@ -56,11 +56,16 @@ def extend( jntmodel ):
 
         key = sa.Column(sa.String(255), primary_key=True)
         value = sa.Column(sa.PickleType, nullable=False)
-        settinggroup = sa.Column(sa.String(255),
-                                  sa.ForeignKey('core_settings_group.key',
-                                                use_alter=True,
-                                                name="fk_settings_group"),
-                                  nullable=False)
+        #~ settinggroup = sa.Column(sa.String(255),
+                                  #~ sa.ForeignKey('core_settings_group.key',
+                                                #~ use_alter=True,
+                                                #~ name="fk_settings_group"),
+        settinggroup_id = sa.Column(sa.String(255), sa.ForeignKey('core_settings_group.key'),
+                                     nullable=False)
+
+        settinggroup = relationship('SettingGroup', lazy="joined",
+                                        backref="core_settings_group", uselist=False,
+                                        foreign_keys=[settinggroup_id])
 
         # The name (displayed in the form)
         name = sa.Column(sa.String(200), nullable=False)

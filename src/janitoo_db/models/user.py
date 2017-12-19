@@ -120,7 +120,7 @@ def extend( jntmodel ):
                                      nullable=False)
 
         primary_group = relationship('Group', lazy="joined",
-                                        backref="user_group", uselist=False,
+                                        backref="core_groups", uselist=False,
                                         foreign_keys=[primary_group_id])
 
         secondary_groups = \

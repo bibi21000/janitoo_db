@@ -36,7 +36,7 @@ from pkg_resources import iter_entry_points
 from sqlalchemy.orm import sessionmaker, scoped_session
 
 from janitoo_nosetests import JNTTBase
-from janitoo_nosetests.models import JNTTModels, JNTTModelsCommon
+from janitoo_nosetests.models import JNTTModels, JNTTModelsCommon, jntt_models
 
 from janitoo.options import JNTOptions
 from janitoo_db.base import Base, create_db_engine
@@ -58,3 +58,5 @@ class TestModels(JNTTModels, ModelsCommon):
     """Test the models
     """
     models_conf = "tests/data/janitoo_db.conf"
+
+jntt_models(__name__, ModelsCommon, prefix='Db', dbs=[('Postgresql',{'dbconf':'postgresql://janitoo:janitoo@localhost/janitoo_tests'})])

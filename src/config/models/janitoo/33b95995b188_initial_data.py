@@ -133,19 +133,18 @@ def upgrade():
         column('description', Text),
         column('value', PickleType),
         column('value_type', String),
-        column('settinggroup', String),
+        column('settinggroup_key', String),
         column('extra', PickleType)
     )
     op.bulk_insert(core_settings,
         [
-            {'key':'project_title', 'name':'Project title', 'description':'The title of the project.','value_type':'string', 'value':'Janitoo', 'extra':None, 'settinggroup':"general"},
-            {'key':'project_subtitle', 'name':'Project subtitle', 'description':'A short description of the project.','value_type':'string', 'value':'Janitoo', 'extra':None, 'settinggroup':"general"},
-            {'key':'posts_per_page', 'name':'Project title', 'description':'Number of posts displayed per page.','value_type':'integer', 'value':10, 'extra':{'min': 5}, 'settinggroup':"general"},
-            {'key':'topics_per_page', 'name':'Project title', 'description':'Number of topics displayed per page.','value_type':'integer', 'value':10, 'extra':{'min': 5}, 'settinggroup':"general"},
-            {'key':'users_per_page', 'name':'Project title', 'description':'Number of users displayed per page.','value_type':'integer', 'value':10, 'extra':{'min': 5}, 'settinggroup':"general"},
-
-            {'key':'default_theme', 'name':'Default Theme', 'description':'Change the default theme for your forum.','value_type':'select', 'value':'admin', 'extra':{'choices': [('admin','admin'),('bootstrap3','bootstrap3'),('bootstrap2','bootstrap2')]}, 'settinggroup':"appearance"},
-            {'key':'default_language', 'name':'Default Language', 'description':'Change the default language for your forum.','value_type':'string', 'value':'en', 'extra':{'choices': [('en','English')]}, 'settinggroup':"appearance"},
+            {'key':'project_title', 'name':'Project title', 'description':'The title of the project.','value_type':'string', 'value':'Janitoo', 'extra':None, 'settinggroup_key':"general"},
+            {'key':'project_subtitle', 'name':'Project subtitle', 'description':'A short description of the project.','value_type':'string', 'value':'Janitoo', 'extra':None, 'settinggroup_key':"general"},
+            {'key':'posts_per_page', 'name':'Project title', 'description':'Number of posts displayed per page.','value_type':'integer', 'value':10, 'extra':{'min': 5}, 'settinggroup_key':"general"},
+            {'key':'topics_per_page', 'name':'Project title', 'description':'Number of topics displayed per page.','value_type':'integer', 'value':10, 'extra':{'min': 5}, 'settinggroup_key':"general"},
+            {'key':'users_per_page', 'name':'Project title', 'description':'Number of users displayed per page.','value_type':'integer', 'value':10, 'extra':{'min': 5}, 'settinggroup_key':"general"},
+            {'key':'default_theme', 'name':'Default Theme', 'description':'Change the default theme for your forum.','value_type':'select', 'value':'admin', 'extra':{'choices': [('admin','admin'),('bootstrap3','bootstrap3'),('bootstrap2','bootstrap2')]}, 'settinggroup_key':"appearance"},
+            {'key':'default_language', 'name':'Default Language', 'description':'Change the default language for your forum.','value_type':'string', 'value':'en', 'extra':{'choices': [('en','English')]}, 'settinggroup_key':"appearance"},
         ]
     )
 
