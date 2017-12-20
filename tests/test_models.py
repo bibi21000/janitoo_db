@@ -35,7 +35,7 @@ from pkg_resources import iter_entry_points
 
 from sqlalchemy.orm import sessionmaker, scoped_session
 
-from janitoo_nosetests import JNTTBase
+from janitoo_nosetests import JNTTBase, DBCONFS
 from janitoo_nosetests.models import JNTTModels, JNTTModelsCommon, jntt_models
 
 from janitoo.options import JNTOptions
@@ -75,4 +75,4 @@ class TestModels(JNTTModels, ModelsCommon):
     models_conf = "tests/data/janitoo_db.conf"
 
 JNTTBase.skipCITest()
-jntt_models(__name__, ModelsCommon, prefix='Db', dbs=[('Postgresql',{'dbconf':'postgresql://janitoo:janitoo@localhost/janitoo_tests'})])
+jntt_models(__name__, ModelsCommon, prefix='Db', dbs=[DBCONFS[2]])
