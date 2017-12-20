@@ -59,7 +59,6 @@ class CommonDbSerser():
     hadds = [HADD%(2218,0)]
 
     def test_040_server_start_no_error_in_log(self):
-        self.wipTest()
         self.start()
         time.sleep(5)
         if self.server_section:
