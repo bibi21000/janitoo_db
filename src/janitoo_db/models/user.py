@@ -44,8 +44,8 @@ def extend( jntmodel ):
     groups_users = sa.Table(
         'core_groups_users',
         Base.metadata,
-        sa.Column('user_id', sa.Integer(), sa.ForeignKey('core_users.id')),
-        sa.Column('group_id', sa.Integer(), sa.ForeignKey('core_groups.id')))
+        sa.Column('user_id', sa.Integer(), sa.ForeignKey('core_users.id', ondelete="CASCADE")),
+        sa.Column('group_id', sa.Integer(), sa.ForeignKey('core_groups.id', ondelete="CASCADE")))
     jntmodel.groups_users = groups_users
 
 
@@ -127,8 +127,9 @@ def extend( jntmodel ):
             relationship('Group',
                             secondary=groups_users,
                             primaryjoin=(groups_users.c.user_id == id),
-                            backref=backref('users', lazy='dynamic'),
-                            lazy='dynamic')
+                            backref=backref('users', lazy='dynamic', cascade="all,delete"),
+                            lazy='dynamic',
+                            passive_deletes = True)
 
         @property
         def permissions(self):

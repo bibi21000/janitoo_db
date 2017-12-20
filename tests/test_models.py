@@ -47,12 +47,27 @@ class ModelsCommon(JNTTModelsCommon):
     """Test the models
     """
 
-    def test_001_user(self):
+    def test_101_user(self):
         self.create_all()
         group = jntmodels.Group(name="test_group")
         user = jntmodels.User(username="test_user", email="test@gmail.com", _password="test", primary_group=group)
-        self.dbsession.merge(group, user)
+        self.dbsession.add_all([group, user])
         self.dbsession.commit()
+
+    def test_102_user_delete_cascade(self):
+        self.skipSqliteTest()
+        self.create_all()
+        count = self.dbsession.query(jntmodels.groups_users).count()
+        pgroup = jntmodels.Group(name="primary_group")
+        sgroup1 = jntmodels.Group(name="secondary_group_1")
+        sgroup2 = jntmodels.Group(name="secondary_group_2")
+        user = jntmodels.User(username="test_user", email="test@gmail.com", _password="test", primary_group=pgroup, secondary_groups=[sgroup1,sgroup2])
+        self.dbsession.add_all([pgroup, sgroup1, sgroup1, user])
+        self.dbsession.commit()
+        self.assertEqual(count+2, self.dbsession.query(jntmodels.groups_users).count())
+        self.dbsession.delete(user)
+        self.dbsession.commit()
+        self.assertEqual(count, self.dbsession.query(jntmodels.groups_users).count())
 
 class TestModels(JNTTModels, ModelsCommon):
     """Test the models
